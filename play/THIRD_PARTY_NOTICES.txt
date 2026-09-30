@@ -1,0 +1,66 @@
+CubePix — third-party notices
+==============================
+CubePix © Lewydo™. The game includes material from the projects below; their licences require these notices
+to travel with every copy of the game (they do not need to be shown on screen).
+
+1) Fluent Emoji (Microsoft) — some exhibits and item sprites are pixelised from these emoji.
+   https://github.com/microsoft/fluentui-emoji
+
+MIT License
+
+Copyright (c) Microsoft Corporation.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE
+
+2) pixelarticons (Gerrit Halfmann) — shapes of the interface symbols.
+   https://github.com/halfmage/pixelarticons
+
+MIT License
+
+Copyright (c) 2019 Gerrit Halfmann
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+3) Fonts — Tektur, Exo 2, M PLUS 1, Noto Sans KR, Noto Sans TC, Nunito: SIL Open Font License 1.1
+   (https://openfontlicense.org). Loaded from Google Fonts; a subset of Nunito (the letters of the Lewydo
+   wordmark and slogan) is embedded in the game.
+
+4) Paintings — public-domain works (artists died before 1956, works published before 1931).
+   The pixel versions are our own. Sources: tools/art/sources/paintings/SOURCES.tsv
+
+5) Music — composed for CubePix by Lewydo™. It is played by recorded instruments (upright piano, harp,
+   glockenspiel, viola and cello sections) from VSCO 2: Community Edition by Versilian Studios (Sam Gossner);
+   the Upright Piano was sampled by Simon Dalzell (Ivy Audio). Released under CC0 1.0 — no rights reserved;
+   credit given with thanks. https://github.com/sgossner/VSCO-2-CE · http://vis.versilstudios.net/vsco-community.html
