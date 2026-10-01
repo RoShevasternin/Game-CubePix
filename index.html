@@ -70,20 +70,49 @@
   50%{transform:scale(1);animation-timing-function:cubic-bezier(.61,1,.88,1)}72.727%{transform:scale(1.07);animation-timing-function:cubic-bezier(.12,0,.39,0)}100%{transform:scale(1)}}
 @keyframes lwGlow{0%,11.111%{transform:scale(1);animation-timing-function:cubic-bezier(.61,1,.88,1)}37.778%{transform:scale(1.15);animation-timing-function:cubic-bezier(.12,0,.39,0)}100%{transform:scale(1.05)}}
 
-/* the splash (BrandScreen) — the same timeline as ABrandGroup.playIntroAnimation: add .lw-splash to the .lw-lockup;
-   after 3 s (the line is open + 0.6 s to take it in) move on to the game */
-.lw-splash .lw-logo{opacity:0;animation:lwFadeIn .8s cubic-bezier(.5,0,.5,1) .3s forwards;}
-.lw-splash .lw-front{animation:lwHeart 440ms linear 1.1s 1;}
-.lw-splash .lw-back{animation:lwGlow 450ms linear 1.1s 1 forwards;}
-.lw-splash .lw-name{opacity:0;transform:scale(1.06);animation:lwFocus .6s cubic-bezier(.5,0,.5,1) .9s forwards;}
-.lw-splash .lw-slogan{opacity:0;transform:scale(1.06);animation:lwFocus .6s cubic-bezier(.5,0,.5,1) 1.3s forwards;}
-.lw-splash .lw-line{opacity:0;transform:scaleX(0);animation:lwFadeIn .3s linear 1.7s forwards,lwOpen .7s cubic-bezier(.16,1,.3,1) 1.7s forwards;}
+/* the splash (BrandScreen) — add .lw-splash to the .lw-lockup. Everything arrives first, top to bottom; then the heart beats as the
+   finale, with the Lewydo sound (../../sound/lewydo-heartbeat.*; start it at 2.09 s — its first beat is 0.03 s in):
+     0.15→0.85 the heart and its glow arrive · 0.55→1.10 «Lewydo» · 0.85→1.40 the slogan · 1.15→1.85 the line opens from the middle
+     2.00 a breath in · 2.17 LUB · 2.45 DUB — the glow blooms with each, two waves of light leave the heart
+     2.70 · 2.82 · 2.96 the three notes «Lev-why-do»: «Lewydo», the slogan and the line catch the light, one per note
+     3.80 → the game.
+   The waves are two more copies of the glow inside the logo, before .lw-back: <img class="lw-aura" src="…/brand_back…" alt=""> ×2.
+   The short beat (.lw-beating) stays for About us and the menu pill. */
+.lw-aura{position:absolute;left:0;top:0;width:100%;height:100%;opacity:0;pointer-events:none;transform-origin:50% 50%;}
+.lw-splash .lw-logo{opacity:0;transform:scale(.94);animation:lwArrive .7s cubic-bezier(.22,1,.36,1) .15s forwards;}
+.lw-splash .lw-front{animation:lwBeat 900ms linear 2s 1;}
+.lw-splash .lw-back{animation:lwBloom 1000ms linear 2s 1 forwards;}
+.lw-splash .lw-aura{animation:lwWave 1s cubic-bezier(.2,.7,.3,1) 2.12s 1;}
+.lw-splash .lw-aura+.lw-aura{animation:lwWave2 .9s cubic-bezier(.2,.7,.3,1) 2.4s 1;}
+.lw-splash .lw-name{opacity:0;transform:scale(1.06);animation:lwFocus .55s cubic-bezier(.5,0,.5,1) .55s forwards,lwLit .9s ease-out 2.7s 1;}
+.lw-splash .lw-slogan{opacity:0;transform:scale(1.06);animation:lwFocus .55s cubic-bezier(.5,0,.5,1) .85s forwards,lwLit .9s ease-out 2.82s 1;}
+.lw-splash .lw-line{opacity:0;transform:scaleX(0);animation:lwFadeIn .3s linear 1.15s forwards,lwOpen .7s cubic-bezier(.16,1,.3,1) 1.15s forwards,lwLit .9s ease-out 2.96s 1;}
+@keyframes lwArrive{to{opacity:1;transform:scale(1)}}
 @keyframes lwFadeIn{to{opacity:1}}
 @keyframes lwFocus{to{opacity:1;transform:scale(1)}}
 @keyframes lwOpen{to{transform:scaleX(1)}}
+@keyframes lwBeat{
+  0%{transform:scale(1);animation-timing-function:cubic-bezier(.45,0,.55,1)}
+  11%{transform:scale(.95);animation-timing-function:cubic-bezier(.2,.9,.3,1)}
+  19%{transform:scale(1.2);animation-timing-function:cubic-bezier(.45,0,.55,1)}
+  31%{transform:scale(.97);animation-timing-function:cubic-bezier(.2,.9,.3,1)}
+  50%{transform:scale(1.12);animation-timing-function:cubic-bezier(.45,0,.55,1)}
+  63%{transform:scale(.985);animation-timing-function:cubic-bezier(.45,0,.55,1)}
+  80%{transform:scale(1.012)}
+  100%{transform:scale(1)}}
+@keyframes lwBloom{
+  0%{transform:scale(1);filter:brightness(1)}
+  12%{transform:scale(.98);filter:brightness(1);animation-timing-function:cubic-bezier(.2,.9,.3,1)}
+  22%{transform:scale(1.3);filter:brightness(1.4);animation-timing-function:cubic-bezier(.45,0,.55,1)}
+  40%{transform:scale(1.1);filter:brightness(1.1);animation-timing-function:cubic-bezier(.2,.9,.3,1)}
+  52%{transform:scale(1.2);filter:brightness(1.25);animation-timing-function:cubic-bezier(.45,0,.55,1)}
+  100%{transform:scale(1.05);filter:brightness(1)}}
+@keyframes lwWave{0%{opacity:.55;transform:scale(1)}100%{opacity:0;transform:scale(1.9)}}
+@keyframes lwWave2{0%{opacity:.32;transform:scale(1)}100%{opacity:0;transform:scale(1.55)}}
+@keyframes lwLit{0%{filter:none}18%{filter:brightness(1.18) drop-shadow(0 0 9px rgba(109,245,147,.65))}100%{filter:none}}
 
 @media (prefers-reduced-motion:reduce){
-  .lw-beating .lw-front,.lw-beating .lw-back,.lw-splash .lw-front,.lw-splash .lw-back{animation:none;}
+  .lw-beating .lw-front,.lw-beating .lw-back,.lw-splash .lw-front,.lw-splash .lw-back,.lw-splash .lw-aura{animation:none;}
   .lw-splash .lw-logo,.lw-splash .lw-name,.lw-splash .lw-slogan,.lw-splash .lw-line{animation:none;opacity:1;transform:none;}
 }
 /* ── CubePix site — the game's pixel-arcade look: cut-corner pixel frames, 3D button lips, Tektur caps, Exo 2 to read ── */
