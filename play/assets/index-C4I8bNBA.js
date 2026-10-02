@@ -933,7 +933,11 @@ Error generating stack: `+l.message+`
     background:conic-gradient(from 45deg,#fff 0 25%,#FFD60A 0 50%,#fff 0 75%,#FFD60A 0);clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);
     animation:goldTwinkle 1.4s ease-in-out infinite;}
   @keyframes goldTwinkle{0%,100%{transform:scale(.7) rotate(0);opacity:.75}50%{transform:scale(1.15) rotate(45deg);opacity:1}}
-  .gold-dot{position:absolute;top:2px;right:2px;width:4px;height:4px;background:#FFD60A;opacity:.55;pointer-events:none;box-shadow:0 0 4px #FFD60A;}
+  /* золото, що чекає свого шару: та сама зірка, що й .gold-badge, лише менша, тьмяна й нерухома — «спить»
+     (власник 02.10.2026: квадратик 4×4 на неактивному золоті «не гарно») */
+  .gold-dot{position:absolute;top:1px;right:1px;width:calc(var(--cell)*.3);height:calc(var(--cell)*.3);min-width:5px;min-height:5px;pointer-events:none;
+    background:conic-gradient(from 45deg,#fff 0 25%,#FFD60A 0 50%,#fff 0 75%,#FFD60A 0);clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);
+    transform:scale(.7);opacity:.45;}
   .gold-pill{display:inline-flex;align-items:center;gap:5px;color:#FFD60A;font-size:8px;padding:3px 7px 3px 4px;background:rgba(255,214,10,.08);
     box-shadow:0 0 0 2px rgba(255,214,10,.25);text-shadow:1px 1px 0 #000;}
   .gold-pill.bump{animation:goldBump .45s cubic-bezier(.34,1.56,.64,1);}
