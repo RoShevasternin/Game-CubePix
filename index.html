@@ -73,8 +73,7 @@
 /* the splash (BrandScreen) — add .lw-splash to the .lw-lockup. Everything arrives first, top to bottom; then the heart beats as the
    finale, with the Lewydo sound (../../sound/lewydo-heartbeat.*; start it at 2.09 s — its first beat is 0.03 s in):
      0.15→0.85 the heart and its glow arrive · 0.55→1.10 «Lewydo» · 0.85→1.40 the slogan · 1.15→1.85 the line opens from the middle
-     2.00 a breath in · 2.17 LUB · 2.45 DUB — the glow blooms with each, two waves of light leave the heart
-     2.70 · 2.82 · 2.96 the three notes «Lev-why-do»: «Lewydo», the slogan and the line catch the light, one per note
+     2.00 a breath in · 2.17 LUB · 2.45 DUB — the glow blooms with each, two waves of light leave the heart; the sound is the heart only
      3.80 → the game.
    The waves are two more copies of the glow inside the logo, before .lw-back: <img class="lw-aura" src="…/brand_back…" alt=""> ×2.
    The short beat (.lw-beating) stays for About us and the menu pill. */
@@ -84,9 +83,9 @@
 .lw-splash .lw-back{animation:lwBloom 1000ms linear 2s 1 forwards;}
 .lw-splash .lw-aura{animation:lwWave 1s cubic-bezier(.2,.7,.3,1) 2.12s 1;}
 .lw-splash .lw-aura+.lw-aura{animation:lwWave2 .9s cubic-bezier(.2,.7,.3,1) 2.4s 1;}
-.lw-splash .lw-name{opacity:0;transform:scale(1.06);animation:lwFocus .55s cubic-bezier(.5,0,.5,1) .55s forwards,lwLit .9s ease-out 2.7s 1;}
-.lw-splash .lw-slogan{opacity:0;transform:scale(1.06);animation:lwFocus .55s cubic-bezier(.5,0,.5,1) .85s forwards,lwLit .9s ease-out 2.82s 1;}
-.lw-splash .lw-line{opacity:0;transform:scaleX(0);animation:lwFadeIn .3s linear 1.15s forwards,lwOpen .7s cubic-bezier(.16,1,.3,1) 1.15s forwards,lwLit .9s ease-out 2.96s 1;}
+.lw-splash .lw-name{opacity:0;transform:scale(1.06);animation:lwFocus .55s cubic-bezier(.5,0,.5,1) .55s forwards;}
+.lw-splash .lw-slogan{opacity:0;transform:scale(1.06);animation:lwFocus .55s cubic-bezier(.5,0,.5,1) .85s forwards;}
+.lw-splash .lw-line{opacity:0;transform:scaleX(0);animation:lwFadeIn .3s linear 1.15s forwards,lwOpen .7s cubic-bezier(.16,1,.3,1) 1.15s forwards;}
 @keyframes lwArrive{to{opacity:1;transform:scale(1)}}
 @keyframes lwFadeIn{to{opacity:1}}
 @keyframes lwFocus{to{opacity:1;transform:scale(1)}}
@@ -109,7 +108,6 @@
   100%{transform:scale(1.05);filter:brightness(1)}}
 @keyframes lwWave{0%{opacity:.55;transform:scale(1)}100%{opacity:0;transform:scale(1.9)}}
 @keyframes lwWave2{0%{opacity:.32;transform:scale(1)}100%{opacity:0;transform:scale(1.55)}}
-@keyframes lwLit{0%{filter:none}18%{filter:brightness(1.18) drop-shadow(0 0 9px rgba(109,245,147,.65))}100%{filter:none}}
 
 @media (prefers-reduced-motion:reduce){
   .lw-beating .lw-front,.lw-beating .lw-back,.lw-splash .lw-front,.lw-splash .lw-back,.lw-splash .lw-aura{animation:none;}
