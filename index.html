@@ -24,7 +24,9 @@
 <link rel="alternate" hreflang="ja" href="https://roshevasternin.github.io/Game-CubePix/?lang=ja">
 <link rel="alternate" hreflang="zh-TW" href="https://roshevasternin.github.io/Game-CubePix/?lang=zh-TW">
 <link rel="alternate" hreflang="x-default" href="https://roshevasternin.github.io/Game-CubePix/">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="CubePix">
 <meta property="og:url" content="https://roshevasternin.github.io/Game-CubePix/">
@@ -175,13 +177,13 @@ header,main,footer{position:relative;z-index:1;}
 .top{position:sticky;top:0;z-index:20;background:rgba(9,8,28,.78);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 2px 0 rgba(46,41,102,.8);}
 .top .wrap{display:flex;align-items:center;gap:10px;min-height:64px;}
 .mark{display:flex;align-items:center;gap:8px;text-decoration:none;font:700 18px var(--f-ui);letter-spacing:.08em;margin-right:auto;white-space:nowrap;}
-.mark svg{width:30px;height:30px;}
+.mark img{width:34px;height:34px;border-radius:9px;box-shadow:0 2px 10px rgba(255,60,172,.35);}
 .mark .c{color:var(--pink);} .mark .p{color:#fff;}
 .nav{display:none;gap:4px;}
 .nav a{font:600 14px var(--f-ui);text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);text-decoration:none;padding:10px;}
 .nav a:hover{color:#fff;}
 @media (min-width:980px){.nav{display:flex;}}
-@media (max-width:420px){.top-play span{display:none;} .top-play{padding:6px 11px;} .mark{font-size:16px;gap:6px;} .mark svg{width:26px;height:26px;}}
+@media (max-width:420px){.top-play span{display:none;} .top-play{padding:6px 11px;} .mark{font-size:16px;gap:6px;} .mark img{width:28px;height:28px;border-radius:8px;}}
 .langsel{position:relative;}
 .lang-btn{gap:8px;}
 .lang-btn .flag,.lang-menu .flag{display:inline-flex;}
@@ -382,7 +384,7 @@ html.og .tagline{font-size:22px;}
 <header class="top">
   <div class="wrap">
     <a class="mark" href="#top" aria-label="CubePix">
-      <svg viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,6 92,28 50,50 8,28" fill="#ff8fd2"/><polygon points="8,28 50,50 50,96 8,74" fill="#ff3cac"/><polygon points="92,28 50,50 50,96 92,74" fill="#99245f"/><polyline points="8,28 50,6 92,28" fill="none" stroke="#ffd6ec" stroke-width="4"/></svg>
+      <img src="mark-96.png" alt="" width="34" height="34">
       <span><span class="c">CUBE</span><span class="p">PIX</span></span>
     </a>
     <nav class="nav" aria-label="Site sections" data-ta="aria-label:nav.label">
