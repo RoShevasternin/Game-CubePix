@@ -1,5 +1,6 @@
 Tektur — Copyright 2023 The Tektur Project Authors (https://github.com/hyvyys/Tektur)
 Exo 2 — Copyright 2013 The Exo 2 Project Authors (https://github.com/NDISCOVER/Exo-2.0)
+Inter — Copyright 2016 The Inter Project Authors (https://github.com/rsms/inter)
 Nunito (the subset embedded in the pages for the Lewydo mark) — Copyright 2014 The Nunito Project Authors (https://github.com/googlefonts/nunito)
 
 These Font Software are licensed under the SIL Open Font License, Version 1.1.
