@@ -519,6 +519,7 @@ koo`,"film.watch":"ILAALI","film.sound":"Sagalee banii ilaali","film.c1":"Muuziy
   @keyframes goldFly{0%{transform:translate(0,0) scale(1.2)}35%{transform:translate(calc(var(--dx) * .25),calc(var(--dy) * .25 - 36px)) scale(1.5)}100%{transform:translate(var(--dx),var(--dy)) scale(.55)}}
   .bar-flash{animation:barFlash .7s ease-out;}
   @keyframes barFlash{0%{filter:brightness(2.4) drop-shadow(0 0 10px #FFD60A)}100%{filter:none}}
+  /* @site:museum — the game's site builds its museum tower from these rules (scripts/build-site.mjs): keep them self-contained */
   /* ── museum tower map ── */
   .roof{position:relative;display:flex;flex-direction:column;align-items:center;margin-top:4px;}
   .roof-sign{position:relative;z-index:1;padding:10px 14px 12px;margin-bottom:-2px;background:#0c0a24;
@@ -699,6 +700,7 @@ koo`,"film.watch":"ILAALI","film.sound":"Sagalee banii ilaali","film.c1":"Muuziy
   .door{width:34px;height:42px;flex:none;display:flex;align-items:center;justify-content:center;background:#0a0820;
     box-shadow:0 0 0 3px #3ddc84,inset 0 4px 0 rgba(61,220,132,.25);}
   .ground{height:26px;margin:0 -10px;background:linear-gradient(180deg,#3ddc84 0 3px,#1f6b3c 3px 9px,transparent 9px),repeating-linear-gradient(90deg,#15482a 0 8px,#123d24 8px 16px);}
+  /* @site:end */
   /* ── gallery: exhibition wall + viewing room ── */
   .gal-tabs{display:flex;gap:2px;overflow-x:auto;padding:14px 2px 6px;margin:0 -4px;scrollbar-width:none;}
   .gal-tabs::-webkit-scrollbar{display:none;}
@@ -1069,6 +1071,7 @@ koo`,"film.watch":"ILAALI","film.sound":"Sagalee banii ilaali","film.c1":"Muuziy
   .eq b:nth-child(2){animation-delay:-.3s;} .eq b:nth-child(3){animation-delay:-.55s;}
   @keyframes eqBar{0%{height:3px}100%{height:12px}}
   @media (prefers-reduced-motion: reduce){ .vinyl.spin,.eq b{animation:none;} }
+  /* @site:museum — the game's site builds its museum tower from these rules (scripts/build-site.mjs): keep them self-contained */
   /* the floor's corridor: one row of frames that scrolls sideways; lamps above and plaques below stay inside;
      the edges fade where there is more to see, and small arrows scroll it for mouse users */
   .corridor-wrap{position:relative;margin:0 -8px;}
@@ -1085,11 +1088,13 @@ koo`,"film.watch":"ILAALI","film.sound":"Sagalee banii ilaali","film.c1":"Muuziy
   .corr-arrow.l i{clip-path:polygon(100% 0,0 50%,100% 100%);}
   @media (hover:hover){.corr-arrow:hover{background:rgba(40,34,100,.9);}}
   .floor.locked .corridor{cursor:default;}
+  /* @site:end */
   /* «rate the game»: a gold pixel button (dark text on gold), the Settings row with a star */
   .wish-rate,.rate-yes{--face:#FFC61A;--hi:#ffe27a;--lo:#d99a00;--lip:#8a5a00;--ol:#1f1400;--glow:rgba(255,198,26,.55);
     display:flex !important;align-items:center;justify-content:center;gap:9px;color:#2a1a00 !important;text-shadow:none !important;text-decoration:none;}
   .set-rate{text-decoration:none;}
   .set-stars{display:flex;align-items:center;gap:6px;}
+  /* @site:museum — the game's site builds its museum tower from these rules (scripts/build-site.mjs): keep them self-contained */
   /* the Wish Hall on top of the museum: frames waiting for new exhibits, the guest book, the gold button */
   .floor.wish{cursor:default;padding-bottom:52px;}
   .floor.wish:active{filter:none;}
@@ -1108,6 +1113,7 @@ koo`,"film.watch":"ILAALI","film.sound":"Sagalee banii ilaali","film.c1":"Muuziy
   .wish-book .read{margin:0;font-size:15px;color:#2b1f10;text-wrap:pretty;}
   .floor.wish .wish-rate{width:calc(100% - 8px);}
   .floor.wish .pedestal{padding-left:4px;}
+  /* @site:end */
   /* the happy-moment invitation */
   .rate-card{width:min(340px,100%);padding:22px 18px 16px !important;display:flex;flex-direction:column;align-items:center;text-align:center;}
   .rate-title{margin:10px 0 8px;}
