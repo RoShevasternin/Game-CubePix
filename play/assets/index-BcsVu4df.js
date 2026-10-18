@@ -1628,10 +1628,12 @@ koo`,"film.watch":"ILAALI","film.sound":"Sagalee banii ilaali","film.c1":"Muuziy
   .fl-bars i:first-child{top:0;transform:translateY(-100%);}
   .fl-bars i:last-child{bottom:0;transform:translateY(100%);}
   .fl-bars.on i{transform:none;}
-  .fl-sub{position:absolute;left:0;right:0;bottom:0;min-height:var(--bar);padding:22px 18px calc(12px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;justify-content:center;
+  .fl-sub{position:absolute;left:0;right:0;bottom:0;min-height:var(--bar);padding:17px 18px max(17px,env(safe-area-inset-bottom,0px));display:flex;align-items:center;justify-content:center;
     text-align:center;color:#f6f3ff;font-size:18px;font-weight:600;line-height:1.36;text-shadow:0 2px 0 #000;pointer-events:none;
     background:linear-gradient(rgba(0,0,0,0),#000 22px);}   /* a long line on a short screen: the black bar grows with it, never text on the picture */
-  .fl-sub.free{background:linear-gradient(transparent,rgba(0,0,0,.72) 40%);padding-top:30px;}
+  /* the line sits in the MIDDLE of the black bar (equal padding; owner 18.10: «по центру чорної області»), and on an iPhone never in the
+     Home indicator's zone (the bottom padding is at least the safe area) */
+  .fl-sub.free{background:linear-gradient(transparent,rgba(0,0,0,.72) 40%);padding-top:30px;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px));}
   .fl-sub span{display:inline;animation:flWord .45s ease-out both;}
   @keyframes flWord{from{opacity:0;filter:blur(4px)}to{opacity:1;filter:none}}
   .fl-hint{position:absolute;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;background:#fff;color:#1a1035;
