@@ -27,6 +27,7 @@ h2{font:700 20px/1.3 var(--f-ui);letter-spacing:.04em;text-transform:uppercase;c
 h3{font:700 17px/1.3 var(--f-read);color:#fff;margin:20px 0 6px;}
 p,ul{margin:10px 0;} ul{padding-left:22px;} li{margin:6px 0;}
 b{color:#fff;}
+.cookie-btn{min-height:44px;padding:8px 16px;border:0;border-radius:10px;background:#221d52;box-shadow:inset 0 0 0 2px #4a4690;color:#fff;font:700 15px/1.2 inherit;cursor:pointer}
 .box{margin:22px 0;padding:18px 20px;background:linear-gradient(170deg,#1f1a4c,#141139);box-shadow:0 -3px 0 0 var(--line),0 3px 0 0 var(--line),-3px 0 0 0 var(--line),3px 0 0 0 var(--line);}
 .box ul{margin:6px 0 0;}
 table{width:100%;border-collapse:collapse;margin:12px 0;font-size:15px;}
@@ -48,7 +49,7 @@ footer{margin-top:44px;color:#9d98dc;font-size:14px;}
       <li>CubePix has <b>no accounts</b>. We never ask for your name, e-mail or phone number.</li>
       <li>Your progress and settings are saved <b>on your device</b>.</li>
       <li>The <b>Android app</b> uses Google services for ads, purchases, analytics, crash reports and holiday events. Those services process some device data, as described below. Where the law requires it (for example in the EEA, the UK and Switzerland), you are asked for consent before ads are personalised.</li>
-      <li><b>This website and the web game</b> use no cookies, no analytics, no ad network and no third-party services. The ads and purchases in the web game are only imitations: nothing is charged. Your progress stays in your browser.</li>
+      <li><b>This website and the web game</b> use Google Analytics <b>only if you choose “Allow”</b> in the cookie banner; until then, and after “Decline”, they make no request to any third party. There is no ad network: the ads and purchases in the web game are only imitations, and nothing is charged. Your progress stays in your browser.</li>
     </ul>
   </div>
 
@@ -91,12 +92,20 @@ footer{margin-top:44px;color:#9d98dc;font-size:14px;}
 
   <h2>The web game and this website</h2>
   <ul>
-    <li>They use <b>no cookies, no analytics, no ad network and no trackers</b>. The fonts are served from this site itself, not from a third party.</li>
+    <li>They use <b>no ad network and no ad tracking</b>. The fonts are served from this site itself, not from a third party.</li>
     <li>The ads in the Web game are imitations drawn by the game itself, and a purchase there is an imitation too: the item is simply given, no payment is asked and none can be made. No ad or payment service is contacted.</li>
     <li>The Web game saves your progress and settings, and the Site remembers the language you picked, in your browser’s local storage on your device. Nothing of it is sent to us. To remove it, clear this site’s data in your browser.</li>
     <li>The Site and the Web game are hosted on GitHub Pages. GitHub may log visitors’ IP addresses for security, as described in the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Privacy Statement</a>.</li>
     <li>Links to Google Play and to our studio’s website are ordinary links. The pages they open have their own privacy policies.</li>
   </ul>
+  <h3 id="analytics">Website analytics (Google Analytics) — only with your consent</h3>
+  <ul>
+    <li>The Site and the Web game show a small banner with two equal buttons, “Decline” and “Allow”. <b>Until you choose, and if you choose “Decline”, no analytics script is loaded and no request goes to Google.</b> This page itself never loads analytics.</li>
+    <li>If you choose “Allow”, Google Analytics 4 (Google Ireland Ltd. / Google LLC) counts visits and how the game is played: which pages and game screens are opened, pictures started and finished (with their stars and score), the tutorial, the daily chest, the curator’s tasks, skins and Pix’s costumes chosen, the game’s language and settings, and taps on the Google Play link. It uses first-party cookies (<code>_ga</code>, <code>_ga_*</code>) on this site’s path, kept for up to 13 months, and Google receives your IP address, which Google Analytics 4 does not store. We do not use Google signals or advertising features, nothing is used for ads, and we never sell or share this data.</li>
+    <li>Your choice is saved in your browser for 13 months. You can change it at any time: “Cookie settings” at the bottom of the Site, “Privacy settings” in the Web game’s Settings, or the button below. “Decline” after “Allow” stops analytics and deletes its cookies.</li>
+    <li>We see these numbers only in aggregate, in the same Google Analytics (Firebase) property as the Android app, to decide which pictures and floors to make next. The legal basis is your consent (GDPR Art. 6(1)(a)).</li>
+  </ul>
+  <p><button type="button" class="cookie-btn" data-cpc-open>Cookie settings</button></p>
 
   <h2>Children</h2>
   <p>CubePix is not directed at children under 13. We do not knowingly collect personal information from children under 13, or under the higher age of digital consent that applies in your country. If you believe a child has provided personal information through the App, contact us and we will help remove it.</p>
@@ -114,6 +123,7 @@ footer{margin-top:44px;color:#9d98dc;font-size:14px;}
   <h3>Deleting your data</h3>
   <ul>
     <li><b>Game progress</b>: uninstall the App or clear its data in Android settings. In the Web game, clear this site’s data in your browser.</li>
+    <li><b>Website analytics</b>: choose “Decline” in “Cookie settings”; the analytics cookies are deleted. To ask us about data already collected, write to us.</li>
     <li><b>Advertising ID</b>: reset or delete it in your Android settings.</li>
     <li><b>Anything else</b>: write to us, and we will delete what we can link to you or help with a request to Google.</li>
   </ul>
@@ -129,5 +139,25 @@ footer{margin-top:44px;color:#9d98dc;font-size:14px;}
 
   <footer>© 2026 Lewydo™. All rights reserved. · <a href="./">CubePix</a></footer>
 </div>
+<style>
+.cpc{position:fixed;z-index:1500;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px));box-sizing:border-box;margin:0 auto;
+  max-width:560px;padding:12px 14px;border-radius:14px;background:rgba(17,14,44,.96);color:#fff;text-align:start;
+  box-shadow:0 10px 34px rgba(0,0,0,.5),inset 0 0 0 2px #3a3480;font:500 14px/1.45 "Exo 2",system-ui,sans-serif;
+  letter-spacing:0;text-transform:none;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.cpc[hidden]{display:none}
+.cpc p{margin:0;color:#e4e1ff}
+.cpc .cpc-t{margin:0 0 4px;color:#fff;font:800 15px/1.3 "Exo 2",system-ui,sans-serif}
+.cpc a{color:#9df5c2;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
+.cpc-b{display:flex;gap:8px;margin-top:10px}
+.cpc-b button{flex:1 1 0;min-width:0;min-height:44px;margin:0;padding:6px 12px;border:0;border-radius:10px;background:#221d52;
+  box-shadow:inset 0 0 0 2px #4a4690;color:#fff;font:700 14px/1.2 "Exo 2",system-ui,sans-serif;cursor:pointer}
+.cpc-b button:hover{background:#2c2666}
+.cpc-b button:focus-visible{outline:2px solid #9df5c2;outline-offset:2px}
+.cpc-b button[aria-pressed=true]{box-shadow:inset 0 0 0 2px #9df5c2}
+@media (min-width:720px){.cpc{left:auto;right:16px;bottom:16px;width:380px}}
+</style>
+<div id="cpc" class="cpc" role="region" aria-label="Cookie settings" data-ta="aria-label:consent.settings" hidden><p class="cpc-t" data-t="consent.title">Help us make the game better</p><p><span data-t="consent.text">We're a two-person indie studio. May we count visits with Google Analytics? It shows us which pictures and floors you enjoy, so we know what to make next. No ad tracking, nothing sold.</span> <a href="privacy.html#analytics" data-t="foot.privacy">Privacy policy</a></p><div class="cpc-b"><button type="button" data-cpc="denied" data-t="consent.decline">Decline</button><button type="button" data-cpc="granted" data-t="consent.allow">Allow</button></div></div>
+<script>window.__cubepixConsent = {"id":"G-SGZ9EJ8RJY","mode":"privacy"};</script>
+<script src="assets/consent.js"></script>
 </body>
 </html>
