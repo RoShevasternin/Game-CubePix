@@ -855,6 +855,27 @@ html.og .tagline{font-size:22px;}
 </style>
 </head>
 <body>
+<style>
+.cpc{position:fixed;z-index:1500;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px));box-sizing:border-box;margin:0 auto;
+  max-width:560px;padding:12px 14px;border-radius:14px;background:rgba(17,14,44,.96);color:#fff;text-align:start;
+  box-shadow:0 10px 34px rgba(0,0,0,.5),inset 0 0 0 2px #3a3480;font:500 14px/1.45 "Exo 2",system-ui,sans-serif;
+  letter-spacing:0;text-transform:none;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.cpc[hidden]{display:none}
+.cpc p{margin:0;color:#e4e1ff}
+.cpc .cpc-t{margin:0 0 4px;color:#fff;font:800 15px/1.3 "Exo 2",system-ui,sans-serif}
+.cpc a{color:#9df5c2;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
+.cpc-b{display:flex;gap:8px;margin-top:10px}
+.cpc-b button{flex:1 1 0;min-width:0;min-height:44px;margin:0;padding:6px 12px;border:0;border-radius:10px;background:#221d52;
+  box-shadow:inset 0 0 0 2px #4a4690;color:#fff;font:700 14px/1.2 "Exo 2",system-ui,sans-serif;cursor:pointer}
+.cpc-b button:hover{background:#2c2666}
+.cpc-b button:focus-visible{outline:2px solid #9df5c2;outline-offset:2px}
+.cpc-b button[aria-pressed=true]{box-shadow:inset 0 0 0 2px #9df5c2}
+@media (min-width:720px){.cpc{left:auto;right:16px;bottom:16px;width:380px}}
+</style>
+<div id="cpc" class="cpc" role="region" aria-label="Cookie settings" data-ta="aria-label:consent.settings" hidden><p class="cpc-t" data-t="consent.title">Help us make the game better</p><p><span data-t="consent.text">We're a two-person indie studio. May we count visits with Google Analytics? It shows us which pictures and floors you enjoy, so we know what to make next. No ad tracking, nothing sold.</span> <a href="privacy.html#analytics" data-t="foot.privacy">Privacy policy</a></p><div class="cpc-b"><button type="button" data-cpc="denied" data-t="consent.decline">Decline</button><button type="button" data-cpc="granted" data-t="consent.allow">Allow</button></div></div>
+<script>window.__cubepixConsent = {"id":"G-SGZ9EJ8RJY","mode":"page"};</script>
+<script src="assets/consent.js"></script>
+
 <a class="skip" href="#main" data-t="skip">Skip to content</a>
 <div class="sky" aria-hidden="true" id="sky"></div>
 
@@ -1697,25 +1718,5 @@ howToPlay();
 addEventListener('resize', () => { clearTimeout(window.__rz); window.__rz = setTimeout(() => { redrawTower(); buildWall(); }, 300); });
 })();
 </script>
-<style>
-.cpc{position:fixed;z-index:1500;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px));box-sizing:border-box;margin:0 auto;
-  max-width:560px;padding:12px 14px;border-radius:14px;background:rgba(17,14,44,.96);color:#fff;text-align:start;
-  box-shadow:0 10px 34px rgba(0,0,0,.5),inset 0 0 0 2px #3a3480;font:500 14px/1.45 "Exo 2",system-ui,sans-serif;
-  letter-spacing:0;text-transform:none;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-.cpc[hidden]{display:none}
-.cpc p{margin:0;color:#e4e1ff}
-.cpc .cpc-t{margin:0 0 4px;color:#fff;font:800 15px/1.3 "Exo 2",system-ui,sans-serif}
-.cpc a{color:#9df5c2;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
-.cpc-b{display:flex;gap:8px;margin-top:10px}
-.cpc-b button{flex:1 1 0;min-width:0;min-height:44px;margin:0;padding:6px 12px;border:0;border-radius:10px;background:#221d52;
-  box-shadow:inset 0 0 0 2px #4a4690;color:#fff;font:700 14px/1.2 "Exo 2",system-ui,sans-serif;cursor:pointer}
-.cpc-b button:hover{background:#2c2666}
-.cpc-b button:focus-visible{outline:2px solid #9df5c2;outline-offset:2px}
-.cpc-b button[aria-pressed=true]{box-shadow:inset 0 0 0 2px #9df5c2}
-@media (min-width:720px){.cpc{left:auto;right:16px;bottom:16px;width:380px}}
-</style>
-<div id="cpc" class="cpc" role="region" aria-label="Cookie settings" data-ta="aria-label:consent.settings" hidden><p class="cpc-t" data-t="consent.title">Help us make the game better</p><p><span data-t="consent.text">We're a two-person indie studio. May we count visits with Google Analytics? It shows us which pictures and floors you enjoy, so we know what to make next. No ad tracking, nothing sold.</span> <a href="privacy.html#analytics" data-t="foot.privacy">Privacy policy</a></p><div class="cpc-b"><button type="button" data-cpc="denied" data-t="consent.decline">Decline</button><button type="button" data-cpc="granted" data-t="consent.allow">Allow</button></div></div>
-<script>window.__cubepixConsent = {"id":"G-SGZ9EJ8RJY","mode":"page"};</script>
-<script src="assets/consent.js"></script>
 </body>
 </html>
