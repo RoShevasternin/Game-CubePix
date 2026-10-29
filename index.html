@@ -750,8 +750,15 @@ html.og .hero-say{display:none;}
 #tower .hwm-bat.b1{right:46px;top:204px;animation-duration:5s;animation-delay:-2s;}
 #tower .hwm-bat.b2{left:10px;top:292px;animation-duration:7s;animation-delay:-3.5s;}
 @keyframes hwmBat{0%{transform:translate(0,0)}33%{transform:translate(-12px,-8px)}66%{transform:translate(6px,-14px)}100%{transform:translate(-4px,6px)}}
-#tower .hwm-web{left:0 !important;top:96px !important;width:44px;height:44px;background-size:44px 44px !important;}
-#tower .hwm-spider{left:30px;right:auto !important;top:100px !important;}
+#tower .hwm-web{position:absolute;top:0;line-height:0;opacity:.55;}
+#tower .hwm-web.l{left:0;}
+#tower .hwm-web.r{right:0;transform:scaleX(-1);}
+#tower .hwm-spider{left:30px;right:auto !important;top:0 !important;}
+#tower .hwm-spider i{height:124px;}
+#tower .hwm-spider svg{animation-name:hwmDrop;}
+@keyframes hwmDrop{0%,100%{transform:translateY(-81px)}55%{transform:translateY(0)}}
+@media (min-width:700px){#tower .hwm-web svg{width:80px;height:80px;}
+}
 #tower .hwm-leaf{position:absolute;top:-26px;line-height:0;animation:hwmFall linear infinite;}
 #tower .hwm-leaf>i{display:block;animation:hwmSway ease-in-out infinite alternate;}
 @keyframes hwmFall{0%{transform:translateY(0)}100%{transform:translateY(calc(100vh + 60px))}}
@@ -943,7 +950,6 @@ footer small{color:#9d98dc;font-size:14px;}
 html.ev .ev-only{display:revert !important;}
 html.ev .ev-ribbon.ev-only{display:inline-flex !important;}
 /* a holiday's own look — site/events/<event>.css (Halloween: the night, the moon, the witches, the cobwebs), inlined by the build */
-html.ev-halloween{--hw-web:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges' fill='none' stroke='%23e4dcff' stroke-opacity='.6'><path d='M0 0L16 16M0 0L16 7M0 0L7 16M0 .5H16M.5 0V16'/><path d='M5 .5Q5 3.5 3.5 3.5Q.5 3.5 .5 5M10 .5Q10 6 8 8Q6 10 .5 10M15.5 .5Q15.5 10 12 12Q10 15.5 .5 15.5'/></svg>");--hw-spider:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 7' shape-rendering='crispEdges'><rect x='0' y='0' width='1' height='1' fill='%238c78d8'/><rect x='3' y='0' width='1' height='1' fill='%238c78d8'/><rect x='7' y='0' width='1' height='1' fill='%238c78d8'/><rect x='10' y='0' width='1' height='1' fill='%238c78d8'/><rect x='1' y='1' width='1' height='1' fill='%238c78d8'/><rect x='4' y='1' width='1' height='1' fill='%238c78d8'/><rect x='5' y='1' width='1' height='1' fill='%234a3580'/><rect x='6' y='1' width='1' height='1' fill='%238c78d8'/><rect x='9' y='1' width='1' height='1' fill='%238c78d8'/><rect x='2' y='2' width='1' height='1' fill='%238c78d8'/><rect x='3' y='2' width='1' height='1' fill='%238c78d8'/><rect x='4' y='2' width='1' height='1' fill='%234a3580'/><rect x='5' y='2' width='1' height='1' fill='%234a3580'/><rect x='6' y='2' width='1' height='1' fill='%234a3580'/><rect x='7' y='2' width='1' height='1' fill='%238c78d8'/><rect x='8' y='2' width='1' height='1' fill='%238c78d8'/><rect x='0' y='3' width='1' height='1' fill='%238c78d8'/><rect x='1' y='3' width='1' height='1' fill='%238c78d8'/><rect x='2' y='3' width='1' height='1' fill='%234a3580'/><rect x='3' y='3' width='1' height='1' fill='%234a3580'/><rect x='4' y='3' width='1' height='1' fill='%234a3580'/><rect x='5' y='3' width='1' height='1' fill='%234a3580'/><rect x='6' y='3' width='1' height='1' fill='%234a3580'/><rect x='7' y='3' width='1' height='1' fill='%234a3580'/><rect x='8' y='3' width='1' height='1' fill='%234a3580'/><rect x='9' y='3' width='1' height='1' fill='%238c78d8'/><rect x='10' y='3' width='1' height='1' fill='%238c78d8'/><rect x='2' y='4' width='1' height='1' fill='%234a3580'/><rect x='3' y='4' width='1' height='1' fill='%234a3580'/><rect x='4' y='4' width='1' height='1' fill='%23ffffff'/><rect x='5' y='4' width='1' height='1' fill='%234a3580'/><rect x='6' y='4' width='1' height='1' fill='%23ffffff'/><rect x='7' y='4' width='1' height='1' fill='%234a3580'/><rect x='8' y='4' width='1' height='1' fill='%234a3580'/><rect x='1' y='5' width='1' height='1' fill='%238c78d8'/><rect x='3' y='5' width='1' height='1' fill='%234a3580'/><rect x='4' y='5' width='1' height='1' fill='%234a3580'/><rect x='5' y='5' width='1' height='1' fill='%234a3580'/><rect x='6' y='5' width='1' height='1' fill='%234a3580'/><rect x='7' y='5' width='1' height='1' fill='%234a3580'/><rect x='9' y='5' width='1' height='1' fill='%238c78d8'/><rect x='0' y='6' width='1' height='1' fill='%238c78d8'/><rect x='4' y='6' width='1' height='1' fill='%234a3580'/><rect x='5' y='6' width='1' height='1' fill='%234a3580'/><rect x='6' y='6' width='1' height='1' fill='%234a3580'/><rect x='10' y='6' width='1' height='1' fill='%238c78d8'/></svg>");}
 /* ── HALLOWEEN on the site — ONE place: this file + site/events/halloween.js (the build inlines both; the page uses them only while
    the game's LIVE dates say so: html.ev-halloween). The game's own look (src/CubePix.jsx: HwMenu, HwSky, HwPerch, «HALLOWEEN THEME»),
    its own sprites (tools/icons/draw_halloween.py → ICONS) and its cobweb / spider (--hw-web, --hw-spider, added by the build).
