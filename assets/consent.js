@@ -40,14 +40,18 @@
   }
   function save(v) { try { localStorage.setItem(KEY, JSON.stringify({ v: v, t: Date.now() })); } catch (e) { /* лише на цей захід */ } }
 
-  var state = load(), loaded = false, sent = 0, played = false, queue = [];
-  // /play/: питаємо не з порога, а коли гравець уже побачив гру (Ходент: доречний момент) — після першої розкритої картини чи
-  // туторіалу, або через ASK_PLAY мс від першого старту картини. Не грав — не питаємо
-  var ASK_END = 1200, ASK_PLAY = 45000, askTimer = 0, asked = false;
-  function ask(ms) {
-    if (state !== null || open || asked) return;
-    clearTimeout(askTimer);
-    askTimer = setTimeout(function () { if (state === null && !open) { asked = true; show(false); } }, ms);
+  var state = load(), loaded = false, sent = 0, queue = [];
+  // Власник 29.10.2026 (як Orbit Dash того ж дня): «питай при вході, а якщо не надав — то ще й після забігу». Банер — одразу при вході
+  // (і на сторінці, і в /play/); гравець нічого не обрав — після першої розкритої картини чи туторіалу банер раз за захід нагадує про
+  // себе: на екрані — дві хвилі світла по обвідці (cpc-nudge; «Зменшити рух» — лише обвідка), схований — з'являється знову.
+  // «Відхилити» — теж вибір: більше не питаємо (до кінця терміну згоди, TTL).
+  var nudged = false;
+  function nudge() {
+    if (state !== null || nudged) return;
+    nudged = true;
+    if (!open) { show(false); return; }
+    box.classList.remove("cpc-nudge"); void box.offsetWidth; box.classList.add("cpc-nudge");
+    setTimeout(function () { box.classList.remove("cpc-nudge"); }, 1700);
   }
 
   /* ── Google Analytics ───────────────────────────────────────────────────── */
@@ -152,8 +156,7 @@
     window.__cubepixTrack = function (name, p) {
       p = p || {};
       var ev = name === "screen_view" ? ["page_view", page(String(p.screen_name || ""))] : [name, p];
-      if (name === "level_start" || name === "tutorial_begin") { if (!played) { played = true; ask(ASK_PLAY); } }
-      if ((name === "level_end" && p.success === "true") || name === "tutorial_complete") ask(ASK_END);
+      if ((name === "level_end" && p.success === "true") || name === "tutorial_complete") setTimeout(nudge, 1200);
       if (state === "granted" && loaded) send(ev[0], ev[1]);
       else if (state === null && queue.length < 40) queue.push(ev);
     };
@@ -162,5 +165,5 @@
   }
 
   if (state === "granted") start();
-  else if (state === null && MODE !== "play") show(false);      // /play/ — після першої картини чи туторіалу (ask)
+  else if (state === null) show(false);                         // при вході — на кожній сторінці, і в грі (власник 29.10)
 })();
