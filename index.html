@@ -741,11 +741,12 @@ html.og .hero-say{display:none;}
 #tower .hwm-leaf>i{display:block;animation:hwmSway ease-in-out infinite alternate;}
 @keyframes hwmFall{0%{transform:translateY(0)}100%{transform:translateY(calc(100vh + 60px))}}
 @keyframes hwmSway{0%{transform:translateX(calc(var(--sw) * -1)) rotate(-35deg)}100%{transform:translateX(var(--sw)) rotate(35deg)}}
+#tower .hwm-floor{position:fixed;left:0;right:0;height:70px;pointer-events:none;z-index:0;overflow:hidden;}
 #tower .hwm-fog{position:absolute;left:-10%;right:-10%;bottom:0;height:70px;
     background:radial-gradient(40% 60% at 25% 80%,rgba(214,206,255,.12),transparent 70%),radial-gradient(45% 70% at 75% 85%,rgba(214,206,255,.1),transparent 70%);
     animation:hwFog 12s ease-in-out infinite alternate;}
 #tower .hwm-ground{position:absolute;left:0;right:0;bottom:4px;height:56px;transform-origin:50% 100%;}
-#tower .menu-scr.fit2 .hwm-ground{transform:scale(.7);}
+#tower .hwm-floor.small .hwm-ground{transform:scale(.7);}
 #tower .hwm-brew{position:absolute;bottom:0;line-height:0;}
 #tower .hwm-brew.l{left:4px;}
 #tower .hwm-brew.r{right:4px;transform:scaleX(-1);}
@@ -769,7 +770,7 @@ html.og .hero-say{display:none;}
 #tower .hwm-rest.r0{left:98px;transform:rotate(20deg);}
 #tower .hwm-rest.r1{right:122px;transform:rotate(-30deg);}
 #tower .hwm-rest.r2{left:116px;bottom:3px;transform:rotate(70deg);}
-@media (prefers-reduced-motion: reduce){#tower .hwm,#tower .hwm *{animation:none !important;}
+@media (prefers-reduced-motion: reduce){#tower .hwm,#tower .hwm *,#tower .hwm-floor *{animation:none !important;}
 #tower .hwm-leaf{display:none;}
 }
 #tower .door{width:34px;height:42px;flex:none;display:flex;align-items:center;justify-content:center;background:#0a0820;
@@ -1025,7 +1026,7 @@ html.ev-halloween .ev-box{position:relative;}
 .hs-rest.r0{left:calc(50% - 82px);transform:rotate(20deg);} .hs-rest.r1{left:calc(50% + 62px);transform:rotate(-30deg);} .hs-rest.r2{left:calc(50% + 6px);bottom:1px;transform:rotate(70deg);}
 @media (min-width:880px){   /* a wide box: the scene a size up (the same sprites, scaled whole) */
   .hs-ground{height:92px;margin-top:-10px;}
-  .hs-brew.l{transform:scale(1.5);transform-origin:0 100%;} .hs-brew.r{transform:scale(-1.5,1.5);transform-origin:100% 100%;}
+  .hs-brew.l{transform:scale(1.5);transform-origin:0 100%;} .hs-brew.r{transform:scale(-1.5,1.5);transform-origin:40% 100%;}   /* mirrored and 1.5× with its right edge in place (a flip about the right edge threw it outside the box) */
   .hs-pk{transform:scale(1.4);transform-origin:50% 100%;}
   .hs-pk.p0{left:calc(50% - 110px);} .hs-pk.p2{left:calc(50% + 80px);} .hs-rest.r0{left:calc(50% - 160px);} .hs-rest.r1{left:calc(50% + 140px);} }
 .hs-off *{animation-play-state:paused !important;}          /* off screen: the strip rests */
