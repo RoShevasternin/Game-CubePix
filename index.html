@@ -386,6 +386,8 @@ header,main,footer{position:relative;z-index:1;}
 .pic-nav.prev{left:-8px;} .pic-nav.next{right:-8px;}
 @media (min-width:400px){.pic-nav.prev{left:-16px;} .pic-nav.next{right:-16px;}}
 @media (min-width:640px){.pic-nav.prev{left:-24px;} .pic-nav.next{right:-24px;}}
+/* a two-column hero narrower than the wrap + 2×24 (a laptop at 125 %): the arrows stay inside the gutter, the page never scrolls sideways */
+@media (min-width:980px) and (max-width:1151px){.pic-nav.prev{left:-16px;} .pic-nav.next{right:-16px;}}
 @media (hover:hover){.pic-nav:hover{transform:scale(1.08);}}
 .pic-nav:active{transform:scale(.93);}
 .pic-nav:focus-visible{outline:3px solid #fff;outline-offset:3px;}
@@ -1791,11 +1793,17 @@ const heroPix = (() => {
   const box = $('.logo-pix'), btn = $('#heroPix'), bub = $('#heroSay'), say = sayer(bub), tap = tapper();
   const svgEl = () => btn.querySelector('svg');
   let size = 0;
-  const place = () => {
+  const place = (again) => {
     const logo = $('.plogo', box), row = $$('.pl-row', logo)[1], x = row && row.lastElementChild; if (!x) return;   // «X»: the row itself is as wide as «CUBE»
     const cell = parseFloat(getComputedStyle(logo).getPropertyValue('--cell')) || 10, s = Math.round(KD.menu.size * cell), B = box.getBoundingClientRect(), R = x.getBoundingClientRect();
     if (s !== size) { size = s; btn.style.width = btn.style.height = s + 'px'; btn.innerHTML = KB.svg({ size: s, cos: WEAR, brush: true, idle: RM ? null : 'breathe', look: [.35, .1] }); }
     const left = R.right - B.left + 1.1 * cell - KD.body.x0 / 100 * s, top = R.bottom - B.top - KD.origin[1] / 100 * s;
+    // right to left the logo stands at the right edge, so Pix (always right of «X») would hang off the screen: move the logo over
+    if (document.documentElement.dir === 'rtl') {
+      const edge = (innerWidth >= 980 ? $('.hero-txt') : $('.hero .wrap')).getBoundingClientRect().right - (innerWidth >= 980 ? 0 : 16);
+      const m = parseFloat(box.style.marginRight) || 0, want = Math.max(0, Math.ceil(m + B.left + left + s - edge));
+      if (again !== true && Math.abs(want - m) > 1) { box.style.marginRight = want + 'px'; return place(true); }
+    } else box.style.marginRight = '';
     btn.style.left = left + 'px'; btn.style.top = top + 'px';
     // the bubble: beside him if there's room on the right, else above his beret (on a phone — over the logo, for a few seconds)
     // (a wide screen: up to the middle of the gap between the columns)
