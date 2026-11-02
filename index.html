@@ -1202,7 +1202,7 @@ html.og .tagline{font-size:22px;}
         <p class="lead" data-t="hero.lead">A calm puzzle for art lovers. Fill the cubes layer by layer, and famous paintings, wonders of the world and little pixel treasures come to life. Every picture ends with a museum label and a true story.</p>
         <div class="ctas">
           <a class="btn btn-pink btn-lg" href="play/"><svg class="px" width="20" height="20" viewBox="0 0 24 24" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><path fill="currentColor" d="M7 3h2v1h-2zM7 4h2v1h-2zM7 5h4v1h-4zM7 6h4v1h-4zM7 7h6v1h-6zM7 8h6v1h-6zM7 9h8v1h-8zM7 10h8v1h-8zM7 11h10v1h-10zM7 12h10v1h-10zM7 13h8v1h-8zM7 14h8v1h-8zM7 15h6v1h-6zM7 16h6v1h-6zM7 17h4v1h-4zM7 18h4v1h-4zM7 19h2v1h-2zM7 20h2v1h-2z"/></svg><span data-t="cta.play">Play in the browser</span></a>
-          <a class="gp" id="gp" href="https://play.google.com/store/apps/details?id=com.lewydo.cubepix" target="_blank" rel="noopener">
+          <a class="gp" id="gp" href="https://play.google.com/store/apps/details?id=com.lewydo.cubepix&referrer=utm_source%3Dsite%26utm_medium%3Dgame_site" target="_blank" rel="noopener">
             <svg class="tri" viewBox="0 0 28 30" aria-hidden="true"><path fill="#00d7fe" d="M1.2.6C.9.9.7 1.4.7 2v26c0 .6.2 1.1.5 1.4l.1.1L15.9 15v-.3L1.3.5z"/><path fill="#ffce00" d="M20.8 19.9 15.9 15v-.3l4.9-4.9.1.1 5.8 3.3c1.7.9 1.7 2.5 0 3.4l-5.8 3.3z"/><path fill="#ff3a44" d="M20.9 19.8 15.9 14.8 1.2 29.5c.5.6 1.4.6 2.4.1l17.3-9.8"/><path fill="#00f076" d="M20.9 9.9 3.6.1C2.6-.5 1.7-.4 1.2.2l14.7 14.6z"/></svg>
             <span><small id="gpSmall" data-t="cta.gp">Get it on</small><strong>Google Play</strong></span>
           </a>
@@ -2174,6 +2174,14 @@ heroPix.start();
 howToPlay();
 addEventListener('resize', () => { clearTimeout(window.__rz); window.__rz = setTimeout(() => { redrawTower(); buildWall(); buildEvPics(); }, 300); });
 })();
+</script>
+<script>
+// A visitor who came with utm_* (a post, an ad): Google Play gets the same marks, so Firebase shows where they really came from
+// (studio rule docs/process/install-source.md). Nothing is sent or stored; the link changes only here, on this page.
+(() => { const q = new URLSearchParams(location.search), keep = new URLSearchParams(), g = document.getElementById('gp');
+  for (const k of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term']) if (q.get(k)) keep.set(k, q.get(k));
+  if (!g || !keep.get('utm_source')) return;
+  const u = new URL(g.href); u.searchParams.set('referrer', keep.toString()); g.href = u.href; })();
 </script>
 </body>
 </html>
