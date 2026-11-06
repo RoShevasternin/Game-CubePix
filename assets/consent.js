@@ -26,7 +26,8 @@
   var box = document.getElementById("cpc");
   if (!box || !/^G-[A-Z0-9]+$/.test(ID || "")) return;
   var root = document.documentElement;
-  // Кука _ga — лише для сайту гри (/Game-CubePix/…), не для всього roshevasternin.github.io (там і сайт студії)
+  // Кука _ga — на шлях сайту гри: з 06.11.2026 у гри свій хост (cubepix.lewydo.com) — це «/»; на старій адресі github.io був
+  // /Game-CubePix/ (там і сайт студії). Шлях береться від самого скрипта, тож працює на будь-якій адресі
   var BASE = (function () {
     try { return new URL("../", (document.currentScript || {}).src || location.href).pathname; } catch (e) { return "/"; }
   })();
@@ -66,6 +67,8 @@
     gtag("consent", "default", { analytics_storage: "granted", ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied" });
     gtag("config", ID, {
       cookie_path: BASE, cookie_expires: 34128000,            // 395 днів — як і сама згода
+      // лише цей хост (cubepix.lewydo.com): типове 'auto' кладе _ga на .lewydo.com — і кука розліталась би на студію й Orbit Dash
+      cookie_domain: location.hostname,
       allow_google_signals: false, allow_ad_personalization_signals: false,
     });
     if (MODE === "play") gtag("set", "user_properties", { game_lang: root.lang || "en", platform_kind: "web" });
