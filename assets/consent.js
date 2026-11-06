@@ -103,9 +103,11 @@
     [].forEach.call(box.querySelectorAll("[data-cpc]"), function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-cpc") === state)); });
     box.hidden = false;
     root.classList.add("cpc-open");
+    // смуга на всю ширину знизу (06.11.2026): сторінка сайту отримує знизу місце під неї — підвал не ховається; веб-гра розкладається сама
+    if (MODE !== "play") document.body.style.paddingBottom = box.offsetHeight + "px";
     if (force) { var b = box.querySelector('[data-cpc="' + (state || "granted") + '"]'); if (b) try { b.focus({ preventScroll: true }); } catch (e) { /* */ } }
   }
-  function hide() { open = false; box.hidden = true; root.classList.remove("cpc-open"); }
+  function hide() { open = false; box.hidden = true; root.classList.remove("cpc-open"); if (MODE !== "play") document.body.style.paddingBottom = ""; }
   function choose(v) {
     state = v; save(v); hide();
     if (v === "granted") start(); else { queue = []; stop(); }

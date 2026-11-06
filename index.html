@@ -1135,26 +1135,33 @@ html.og .tagline{font-size:22px;}
 </head>
 <body>
 <style>
-.cpc{position:fixed;z-index:1500;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px));box-sizing:border-box;margin:0 auto;
-  max-width:560px;padding:12px 14px;border-radius:14px;background:rgba(17,14,44,.96);color:#fff;text-align:start;
-  box-shadow:0 10px 34px rgba(0,0,0,.5),inset 0 0 0 2px #3a3480;font:500 14px/1.45 "Exo 2",system-ui,sans-serif;
-  letter-spacing:0;text-transform:none;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+/* owner 06.11.2026: a bar across the whole bottom, dark and see-through, two big buttons — seen for sure, answered for sure
+   (studio rule docs/ux/analytics-consent.md). The buttons stay EQUAL — same size, same look: refusing as easy as agreeing (GDPR / EDPB
+   dark-patterns guidance), so more «Allow» comes only from honest words, the game's face and the right moment, never from a trick. */
+.cpc{position:fixed;z-index:1500;left:0;right:0;bottom:0;box-sizing:border-box;margin:0;
+  padding:14px max(16px,env(safe-area-inset-right,0px)) calc(14px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+  background:rgba(10,8,30,.86);color:#fff;text-align:start;border-top:1px solid rgba(157,245,194,.38);
+  box-shadow:0 -12px 34px rgba(0,0,0,.45);font:500 14px/1.45 "Exo 2",system-ui,sans-serif;letter-spacing:0;text-transform:none;
+  -webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2)}
 .cpc[hidden]{display:none}
+.cpc-in{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:40px minmax(0,1fr);gap:10px 12px;align-items:center}
+.cpc-i{width:40px;height:40px;border-radius:10px;box-shadow:0 0 0 2px rgba(157,245,194,.35);align-self:start}
 .cpc.cpc-nudge{animation:cpcNudge .8s ease-out 2}
-@keyframes cpcNudge{0%{box-shadow:0 0 0 2px #9df5c2,0 0 0 0 rgba(157,245,194,.55)}100%{box-shadow:0 0 0 2px #9df5c2,0 0 0 14px rgba(157,245,194,0)}}
-@media (prefers-reduced-motion:reduce){.cpc.cpc-nudge{animation:none;box-shadow:0 0 0 2px #9df5c2}}
+@keyframes cpcNudge{0%{box-shadow:0 -12px 34px rgba(0,0,0,.45),inset 0 2px 0 #9df5c2}100%{box-shadow:0 -12px 34px rgba(0,0,0,.45),inset 0 2px 0 rgba(157,245,194,0)}}
+@media (prefers-reduced-motion:reduce){.cpc.cpc-nudge{animation:none;box-shadow:0 -12px 34px rgba(0,0,0,.45),inset 0 2px 0 #9df5c2}}
 .cpc p{margin:0;color:#e4e1ff}
-.cpc .cpc-t{margin:0 0 4px;color:#fff;font:800 15px/1.3 "Exo 2",system-ui,sans-serif}
+.cpc .cpc-t{margin:0 0 2px;color:#fff;font:800 16px/1.3 "Exo 2",system-ui,sans-serif}
 .cpc a{color:#9df5c2;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
-.cpc-b{display:flex;gap:8px;margin-top:10px}
-.cpc-b button{flex:1 1 0;min-width:0;min-height:44px;margin:0;padding:6px 12px;border:0;border-radius:10px;background:#221d52;
-  box-shadow:inset 0 0 0 2px #4a4690;color:#fff;font:700 14px/1.2 "Exo 2",system-ui,sans-serif;cursor:pointer}
-.cpc-b button:hover{background:#2c2666}
-.cpc-b button:focus-visible{outline:2px solid #9df5c2;outline-offset:2px}
-.cpc-b button[aria-pressed=true]{box-shadow:inset 0 0 0 2px #9df5c2}
-@media (min-width:720px){.cpc{left:auto;right:16px;bottom:16px;width:380px}}
+.cpc-b{grid-column:1/-1;display:flex;gap:10px}
+.cpc-b button{flex:1 1 0;min-width:0;min-height:48px;margin:0;padding:8px 14px;border:0;border-radius:12px;background:rgba(255,255,255,.10);
+  box-shadow:inset 0 0 0 2px rgba(157,245,194,.55);color:#fff;font:800 16px/1.2 "Exo 2",system-ui,sans-serif;cursor:pointer}
+.cpc-b button:hover{background:rgba(157,245,194,.16)}
+.cpc-b button:focus-visible{outline:3px solid #9df5c2;outline-offset:2px}
+.cpc-b button[aria-pressed=true]{background:rgba(157,245,194,.22);box-shadow:inset 0 0 0 2px #9df5c2}
+@media (min-width:760px){.cpc-in{grid-template-columns:44px minmax(0,1fr) auto;gap:12px 18px}.cpc-i{width:44px;height:44px;align-self:center}
+  .cpc-b{grid-column:auto;width:340px}}
 </style>
-<div id="cpc" class="cpc" role="region" aria-label="Cookie settings" data-ta="aria-label:consent.settings" hidden><p class="cpc-t" data-t="consent.title">Help us make the game better</p><p><span data-t="consent.text">We're a two-person indie studio. May we count visits with Google Analytics? It shows us which pictures and floors you enjoy, so we know what to make next. No ad tracking, nothing sold.</span> <a href="privacy.html#analytics" data-t="foot.privacy">Privacy policy</a></p><div class="cpc-b"><button type="button" data-cpc="denied" data-t="consent.decline">Decline</button><button type="button" data-cpc="granted" data-t="consent.allow">Allow</button></div></div>
+<div id="cpc" class="cpc" role="region" aria-label="Cookie settings" data-ta="aria-label:consent.settings" hidden><div class="cpc-in"><img class="cpc-i" src="apple-touch-icon.png" alt="" width="44" height="44"><div><p class="cpc-t" data-t="consent.title">Help us make the game better</p><p><span data-t="consent.text">We're a two-person indie studio. May we count visits with Google Analytics? It shows us which pictures and floors you enjoy, so we know what to make next. No ad tracking, nothing sold.</span> <a href="privacy.html#analytics" data-t="foot.privacy">Privacy policy</a></p></div><div class="cpc-b"><button type="button" data-cpc="denied" data-t="consent.decline">Decline</button><button type="button" data-cpc="granted" data-t="consent.allow">Allow</button></div></div></div>
 <script>window.__cubepixConsent = {"id":"G-SGZ9EJ8RJY","mode":"page"};</script>
 <script src="assets/consent.js"></script>
 
