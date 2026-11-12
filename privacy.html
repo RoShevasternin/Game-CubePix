@@ -66,13 +66,13 @@ footer{margin-top:44px;color:#9d98dc;font-size:14px;}
   .cpc-b{grid-column:auto;width:340px}}
 </style>
 <div id="cpc" class="cpc" role="region" aria-label="Cookie settings" data-ta="aria-label:consent.settings" hidden><div class="cpc-in"><img class="cpc-i" src="apple-touch-icon.png" alt="" width="44" height="44"><div><p class="cpc-t" data-t="consent.title">Help us make the game better</p><p><span data-t="consent.text">We're a two-person indie studio. May we count visits with Google Analytics? It shows us which pictures and floors you enjoy, so we know what to make next. No ad tracking, nothing sold.</span> <a href="privacy.html#analytics" data-t="foot.privacy">Privacy policy</a></p></div><div class="cpc-b"><button type="button" data-cpc="denied" data-t="consent.decline">Decline</button><button type="button" data-cpc="granted" data-t="consent.allow">Allow</button></div></div></div>
-<script>window.__cubepixConsent = {"id":"G-SGZ9EJ8RJY","mode":"privacy"};</script>
+<script>window.__cubepixConsent = {"id":"G-SGZ9EJ8RJY","mode":"privacy","stats":"https://stats.lewydo.com/h"};</script>
 <script src="assets/consent.js"></script>
 
 <div class="wrap">
   <a class="back" href="./"><span>←</span><span><span class="c">CUBE</span>PIX</span></a>
   <h1>Privacy Policy</h1>
-  <p class="meta">CubePix — the game for Android, iPhone and iPad, the web game and this website · effective 2026-11-06</p>
+  <p class="meta">CubePix — the game for Android, iPhone and iPad, the web game and this website · effective 2026-11-12</p>
 
   <div class="box">
     <b>The short version</b>
@@ -80,7 +80,7 @@ footer{margin-top:44px;color:#9d98dc;font-size:14px;}
       <li>CubePix has <b>no accounts</b>. We never ask for your name, e-mail or phone number.</li>
       <li>Your progress and settings are saved <b>on your device</b>.</li>
       <li>The <b>app for Android, iPhone and iPad</b> uses Google services for ads, analytics, crash reports and holiday events, and the store of your device (Google Play or the App Store) for purchases. Those services process some device data, as described below. Where the law requires it (for example in the EEA, the UK and Switzerland), you are asked for consent before ads are personalised. On iPhone and iPad, Apple also asks your permission before the advertising identifier can be used for tracking.</li>
-      <li><b>This website and the web game</b> use Google Analytics <b>only if you choose “Allow”</b> in the cookie banner; until then, and after “Decline”, they make no request to any third party. There is no ad network: the ads and purchases in the web game are only imitations, and nothing is charged. Your progress stays in your browser.</li>
+      <li><b>This website and the web game</b> use Google Analytics <b>only if you choose “Allow”</b> in the cookie banner; until then, and after “Decline”, they make no request to any third party — only one small anonymous message to our own visit counter, which stores nothing that identifies you (see “Visit counter”). There is no ad network: the ads and purchases in the web game are only imitations, and nothing is charged. Your progress stays in your browser.</li>
     </ul>
   </div>
 
@@ -133,6 +133,13 @@ footer{margin-top:44px;color:#9d98dc;font-size:14px;}
     <li>The Site and the Web game are hosted on GitHub Pages. GitHub may log visitors’ IP addresses for security, as described in the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Privacy Statement</a>.</li>
     <li>Links to Google Play, the App Store and our studio’s website are ordinary links. The pages they open have their own privacy policies.</li>
   </ul>
+  <h3 id="visit-counter">Visit counter</h3>
+  <ul>
+    <li>To know roughly how many people visit and where they come from, the Site, the Web game and this policy page send one small anonymous message to our own counter at <code>stats.lewydo.com</code>, which Cloudflare runs for us (Cloudflare Workers): when a page opens, and when you tap “Allow” or “Decline”. It works for everyone, whether or not you allow Google Analytics, because it collects nothing that identifies you. The same counter serves our studio’s other websites.</li>
+    <li><b>What is counted:</b> that a page was opened (which of these three) and which “Allow” / “Decline” choice, if any, was stored at that moment; that you tapped “Allow” or “Decline”, and which choice was stored before that; the country, as the two-letter code that Cloudflare derives from your connection; and a coarse source label: the campaign tag in the link (<code>utm_source</code>) if the address has one; otherwise only the kind of site you came from, such as “google”, “tiktok”, one of our own sites or “other”; or — when the page is opened inside the TikTok, Instagram or Facebook app — that app’s name, worked out on your device. The browser’s name itself is never part of the message. Never the page address, the full referring address, your progress, your name or anything you type.</li>
+    <li><b>What is not used:</b> no cookies and no storage of its own on your device, no random or device ID, no fingerprinting. It only reads the “Allow” / “Decline” choice that the banner has already saved, to record which choice was in place. Cloudflare sees your IP address to deliver the message, as any server does; the counter does not store it, and its server keeps no logs. Your browser’s user agent is checked on the server only to skip search-engine robots and is not stored.</li>
+    <li><b>Retention and legal basis:</b> each count is stored as one anonymous row (the fields above and the time), which we only ever read as totals, such as visits per day and per country; Cloudflare deletes these rows after about 3 months. The legal basis is our legitimate interest in knowing, in aggregate, whether people find the game (GDPR Art. 6(1)(f)); the data cannot be linked to you.</li>
+  </ul>
   <h3 id="analytics">Website analytics (Google Analytics) — only with your consent</h3>
   <ul>
     <li>The Site and the Web game show a small banner with two equal buttons, “Decline” and “Allow”. <b>Until you choose, and if you choose “Decline”, no analytics script is loaded and no request goes to Google.</b> This page itself never loads analytics.</li>
@@ -149,6 +156,7 @@ footer{margin-top:44px;color:#9d98dc;font-size:14px;}
   <ul>
     <li>Data on your device stays until you delete the App, clear its data, or clear this site’s data in your browser.</li>
     <li>Analytics and crash data are kept for a limited time (at most 14 months) and then deleted or anonymised.</li>
+    <li>The anonymous rows of our visit counter are deleted by Cloudflare after about 3 months.</li>
     <li>Data held by Google services is kept under Google’s retention policies and your Google account settings.</li>
   </ul>
 
@@ -164,7 +172,7 @@ footer{margin-top:44px;color:#9d98dc;font-size:14px;}
   </ul>
 
   <h2>International transfers and security</h2>
-  <p>Google may process data outside your country, including in the United States. For transfers from the EEA, the UK and Switzerland it relies on safeguards such as the European Commission’s Standard Contractual Clauses. We use reputable providers and keep what we process to what the game needs.</p>
+  <p>Google, and Cloudflare for our visit counter, may process data outside your country, including in the United States. For transfers from the EEA, the UK and Switzerland it relies on safeguards such as the European Commission’s Standard Contractual Clauses. We use reputable providers and keep what we process to what the game needs.</p>
 
   <h2>Changes to this policy</h2>
   <p>If this policy changes, we will publish the new version on this page with a new effective date. For important changes, we will also tell you in the App.</p>

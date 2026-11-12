@@ -42,6 +42,77 @@
   function save(v) { try { localStorage.setItem(KEY, JSON.stringify({ v: v, t: Date.now() })); } catch (e) { /* лише на цей захід */ } }
 
   var state = load(), loaded = false, sent = 0, queue = [];
+
+  /* ── our anonymous visit counter (owner 12.11.2026; the same as on orbitdash.lewydo.com — its site/src/consent.js) ──────────
+     The ONE exception to «nothing leaves before Allow»: one small message to our own counter at stats.lewydo.com (Cloudflare Worker
+     lewydo-site-stats → Workers Analytics Engine) — for everyone, before a choice and after «Decline», because it keeps nothing personal:
+     no cookies, no ids, no IP, no address or referrer — only these 5 fields (contract: Game-Orbit-Dash-PRIVATE/server/site-stats/README.md):
+       s "cp"   p "home" | "play" | "privacy" | "other"   e "view" | "allow" | "decline"   c the choice BEFORE the event: granted | denied | none
+       src a source label worked out here on the device: utm_source (lower case, not an id) → the kind of site in the referrer (its host only:
+           self / studio / orbitdash / cubepix / google / … / other) → the TikTok / Instagram / Facebook in-app browser (the user agent itself is
+           never sent) → "none".
+     Only navigator.sendBeacon; nothing is written to storage — it only reads the Allow / Decline choice the banner already saved (load()). */
+  var STATS = typeof C.stats === "string" ? C.stats : "https://stats.lewydo.com/h";
+  var REF = [
+    // youtube before google: com.google.android.youtube is the YouTube app, not the search
+    ["youtube", /(^|\.)youtube\.com$|(^|\.)youtu\.be$|^com\.google\.android\.youtube$/],
+    ["google", /(^|\.)google\.[a-z.]+$|^com\.google\.android\./],
+    ["bing", /(^|\.)bing\.com$/],
+    ["duckduckgo", /(^|\.)duckduckgo\.com$/],
+    ["tiktok", /(^|\.)tiktok\.com$|(^|\.)tiktokv\.com$|^com\.zhiliaoapp\.musically/],
+    ["instagram", /(^|\.)instagram\.com$|^com\.instagram\./],
+    ["facebook", /(^|\.)facebook\.com$|(^|\.)fb\.com$|(^|\.)messenger\.com$|^com\.facebook\./],
+    ["x", /(^|\.)x\.com$|(^|\.)twitter\.com$|^t\.co$/],
+    ["reddit", /(^|\.)reddit\.com$|(^|\.)redd\.it$/],
+    ["discord", /(^|\.)discord\.com$|(^|\.)discord\.gg$|(^|\.)discordapp\.com$/],
+    ["telegram", /^t\.me$|(^|\.)telegram\.org$|(^|\.)telegram\.me$|^org\.telegram\./],
+  ];
+  // the in-app browser (no referrer): the user agent is read ONLY here, to pick one of three labels — it goes nowhere
+  var APP = [
+    ["tiktok", /musical_ly|TikTok|Bytedance|trill_/i],
+    ["instagram", /Instagram/],
+    ["facebook", /FBAN|FBAV|FB_IAB|FBIOS/],
+  ];
+  function inApp() {
+    var ua = String(navigator.userAgent || "");
+    for (var i = 0; i < APP.length; i++) if (APP[i][1].test(ua)) return APP[i][0];
+    return "none";
+  }
+  function refKind(h) {
+    if (h === location.hostname) return "self";
+    if (h === "lewydo.com" || h === "www.lewydo.com") return "studio";
+    if (h === "orbitdash.lewydo.com") return "orbitdash";
+    if (h === "cubepix.lewydo.com") return "cubepix";
+    if (/(^|\.)lewydo\.com$/.test(h)) return "studio";
+    for (var i = 0; i < REF.length; i++) if (REF[i][1].test(h)) return REF[i][0];
+    return "other";
+  }
+  function source() {
+    try {
+      var u = (new URLSearchParams(location.search).get("utm_source") || "").toLowerCase();
+      if (u && /^[a-z0-9_.-]{1,32}$/.test(u) && !/^[0-9a-f]{12,}$|\d{6,}/.test(u)) return u;
+      if (document.referrer) {
+        var h = new URL(document.referrer).hostname.toLowerCase();
+        if (h) return refKind(h);
+      }
+      return inApp();
+    } catch (e) { return "none"; }
+  }
+  function page() { return MODE === "play" ? "play" : MODE === "privacy" ? "privacy" : MODE === "page" ? "home" : "other"; }
+  function hit(e, before) {
+    try {
+      if (!STATS || !navigator.sendBeacon) return;
+      navigator.sendBeacon(STATS, JSON.stringify({ s: "cp", p: page(), e: e, c: before === "granted" || before === "denied" ? before : "none", src: source() }));
+    } catch (err) { /* the counter never matters more than the page */ }
+  }
+  (function () {
+    var sentView = false;
+    function view() { if (!sentView) { sentView = true; hit("view", load()); } }
+    try {
+      if (document.prerendering) document.addEventListener("prerenderingchange", view, { once: true });
+      else view();
+    } catch (e) { /* */ }
+  })();
   // Власник 29.10.2026 (як Orbit Dash того ж дня): «питай при вході, а якщо не надав — то ще й після забігу». Банер — одразу при вході
   // (і на сторінці, і в /play/); гравець нічого не обрав — після першої розкритої картини чи туторіалу банер раз за захід нагадує про
   // себе: на екрані — дві хвилі світла по обвідці (cpc-nudge; «Зменшити рух» — лише обвідка), схований — з'являється знову.
@@ -109,6 +180,7 @@
   }
   function hide() { open = false; box.hidden = true; root.classList.remove("cpc-open"); if (MODE !== "play") document.body.style.paddingBottom = ""; }
   function choose(v) {
+    hit(v === "granted" ? "allow" : "decline", state);   // our counter: c is the choice BEFORE this tap
     state = v; save(v); hide();
     if (v === "granted") start(); else { queue = []; stop(); }
     var f = after; after = null;
