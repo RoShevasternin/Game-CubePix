@@ -288,6 +288,17 @@ header,main,footer{position:relative;z-index:1;}
 .nav a{white-space:nowrap;font:600 14px var(--f-ui);text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);text-decoration:none;padding:10px;}
 .nav a:hover{color:#fff;}
 @media (min-width:1100px){.nav{display:flex;}}   /* six sections: one line in every language from here */
+/* «•••»: the language menu's frame; the sections it repeats show only while the header has no room for .nav (the same 1100 px) */
+.nav-more{position:relative;flex:none;}
+.nm-btn{width:44px;padding:6px 0;}
+.nav-menu{position:absolute;inset-inline-start:0;top:calc(100% + 10px);width:max-content;min-width:200px;max-width:calc(100vw - 32px);padding:8px;z-index:30;display:grid;
+  background:linear-gradient(170deg,#211b52,#120f30);box-shadow:0 -3px 0 0 var(--violet),0 3px 0 0 var(--violet),-3px 0 0 0 var(--violet),3px 0 0 0 var(--violet),0 16px 40px rgba(0,0,0,.6);}
+.nav-menu[hidden]{display:none;}
+.nav-menu a{display:block;padding:12px 14px;font:600 14px var(--f-ui);text-transform:uppercase;letter-spacing:.06em;color:var(--ink2);text-decoration:none;white-space:nowrap;}
+.nav-menu a:hover,.nav-menu a:focus-visible{color:#fff;background:rgba(255,255,255,.06);}
+.nav-menu .nm-fixed{position:relative;margin-top:9px;color:var(--gold);}
+.nav-menu .nm-fixed::before{content:"";position:absolute;inset-inline:10px;top:-6px;height:2px;background:var(--line);}
+@media (min-width:1100px){.nav a{padding:10px 6px;} .nm-btn{width:40px;} .nav-menu .nm-sec{display:none;}.nav-menu .nm-fixed{margin-top:0;}.nav-menu .nm-fixed::before{display:none;}}
 @media (max-width:420px){.top-play span{display:none;} .top-play{padding:6px 11px;} .mark{font-size:16px;gap:6px;} .mark img{width:28px;height:28px;border-radius:8px;}}
 .langsel{position:relative;}
 .lang-btn{gap:8px;}
@@ -1230,6 +1241,20 @@ html.og .tagline{font-size:22px;}
       <a href="#shots" data-t="nav.shots">Screenshots</a>
       <a href="#studio" data-t="nav.studio">Studio</a>
     </nav>
+    <!-- «•••» (owner 17.11.2026, studio rule docs/process/press-kit.md, as the Orbit Dash site): always there — the sections the header has no room for
+         (all six on a phone, none from 1100 px), and last, under a thin line, «Press kit» -->
+    <div class="nav-more" id="navMore">
+      <button class="btn btn-sm nm-btn" id="navMoreBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="navMenu" aria-label="Site sections" data-ta="aria-label:nav.label"><svg viewBox="0 0 14 4" width="16" height="5" aria-hidden="true" shape-rendering="crispEdges" fill="currentColor"><path d="M0 0h3v3H0zM5.5 0h3v3h-3zM11 0h3v3h-3z"/></svg></button>
+      <div class="nav-menu" id="navMenu" hidden>
+        <a class="nm-sec" href="#how" data-t="nav.how">How to play</a>
+        <a class="nm-sec" href="#pix" data-t="nav.pix">Pix</a>
+        <a class="nm-sec" href="#museum" data-t="nav.museum">Museum</a>
+        <a class="nm-sec" href="#art" data-t="nav.art">Masterpieces</a>
+        <a class="nm-sec" href="#shots" data-t="nav.shots">Screenshots</a>
+        <a class="nm-sec" href="#studio" data-t="nav.studio">Studio</a>
+        <a class="nm-fixed" href="press/" data-t="foot.press">Press kit</a>
+      </div>
+    </div>
     <!-- «Support the developer» (studio rule docs/process/donations.md, owner 16.11.2026): visible on every screen, leads to #support -->
     <a class="btn btn-sm top-sup" href="#support"><svg class="px-heart" viewBox="0 0 7 6" width="14" height="12" aria-hidden="true" shape-rendering="crispEdges" fill="currentColor"><path d="M1 0h2v1H1zM4 0h2v1H4zM0 1h7v2H0zM1 3h5v1H1zM2 4h3v1H2zM3 5h1v1H3z"/></svg><span data-t="nav.support">Support</span></a>
     <a class="btn btn-pink btn-sm top-play" href="play/" aria-label="Play in the browser" data-ta="aria-label:cta.play"><svg class="px" width="14" height="14" viewBox="0 0 24 24" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><path fill="currentColor" d="M7 3h2v1h-2zM7 4h2v1h-2zM7 5h4v1h-4zM7 6h4v1h-4zM7 7h6v1h-6zM7 8h6v1h-6zM7 9h8v1h-8zM7 10h8v1h-8zM7 11h10v1h-10zM7 12h10v1h-10zM7 13h8v1h-8zM7 14h8v1h-8zM7 15h6v1h-6zM7 16h6v1h-6zM7 17h4v1h-4zM7 18h4v1h-4zM7 19h2v1h-2zM7 20h2v1h-2z"/></svg><span data-t="cta.playShort">Play</span></a>
@@ -1728,6 +1753,14 @@ menu.addEventListener('keydown', (e) => { const bs = $$('button', menu).filter((
   if (e.key === 'ArrowDown') { e.preventDefault(); bs[(i + 1) % bs.length].focus(); } else if (e.key === 'ArrowUp') { e.preventDefault(); bs[(i - 1 + bs.length) % bs.length].focus(); }
   else if (e.key === 'Escape') { openMenu(false); btn.focus(); } });
 document.addEventListener('click', (e) => { if (!menu.hidden && !e.target.closest('.langsel')) openMenu(false); });
+
+// «•••» (owner 17.11.2026): open / close; a tap outside, Esc or a link closes it
+{ const nb = $('#navMoreBtn'), nm = $('#navMenu');
+  const navOpen = (on) => { nm.hidden = !on; nb.setAttribute('aria-expanded', String(on)); if (on) nm.querySelector('a:not([hidden])')?.focus({ preventScroll: true }); };
+  nb.addEventListener('click', (e) => { e.stopPropagation(); navOpen(nm.hidden); });
+  nm.addEventListener('click', (e) => { if (e.target.closest('a')) navOpen(false); });
+  nm.addEventListener('keydown', (e) => { if (e.key === 'Escape') { navOpen(false); nb.focus(); } });
+  document.addEventListener('click', (e) => { if (!nm.hidden && !e.target.closest('.nav-more')) navOpen(false); }); }
 
 // ── pixel art from the game ──
 const grids = {};
