@@ -968,6 +968,8 @@ dialog.label::backdrop{background:rgba(3,3,10,.86);}
 @media (max-width:480px){.top .wrap{gap:8px;} .top-sup{font-size:12px;letter-spacing:.03em;padding:6px 9px;gap:6px;}}
 .top .wrap.fit1 .mark>span,.top .wrap.fit2 .top-sup span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}   /* fitTop(): what steps back when the header is too narrow */
 .top .wrap.fit2 .top-sup{padding:6px 11px;}
+.top .wrap.fit3 .top-play span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}   /* third step (17.11.2026, om / so / zu at 1100 px): «Play» — its ▶ alone (aria-label keeps the name) */
+.top .wrap.fit3 .top-play{padding:6px 11px;}
 .sup{--fr:var(--green);width:min(960px,calc(100% - 6px));margin:3px auto 9px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:32px 20px 30px;
   background:radial-gradient(120% 80% at 50% -10%,rgba(61,220,132,.2),transparent 62%),repeating-conic-gradient(rgba(255,255,255,.024) 0% 25%,transparent 0% 50%) 0 0/4px 4px,linear-gradient(170deg,#12233a 0%,#141139 58%,#18133f 100%);}
 @media (min-width:880px){.sup{padding:52px 48px 46px;}}
@@ -1005,6 +1007,35 @@ dialog.label::backdrop{background:rgba(3,3,10,.86);}
 .sup-copy.ok{--face:#3ddc84;--hi:#a8ffd0;--lo:#22a95e;--lip:#137a40;color:#04120a;}
 .sup-warn{font-size:14px;color:#ffd38a;max-width:46ch;}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+/* ── «Write to us» (17.11.2026): the contact card — the support card's frame in the pink of the game's buttons ── */
+#contact{scroll-margin-top:76px;}
+.contact{--fr:var(--pink);width:min(960px,calc(100% - 6px));margin:3px auto 9px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:32px 20px 30px;}
+@media (min-width:880px){.contact{padding:52px 48px 46px;}}
+.contact-plane{color:var(--pink);filter:drop-shadow(0 0 14px rgba(255,60,172,.55));}
+.contact .eyebrow.contact-eb{margin:2px 0 0;color:var(--pink);}
+.contact-h{max-width:760px;text-wrap:balance;outline:0;}
+.contact-p{max-width:560px;color:var(--ink2);font:500 17px/1.6 var(--f-read);text-wrap:pretty;}
+.contact-addr{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 8px;width:100%;max-width:520px;}
+.contact-addr code{flex:1 1 220px;min-width:0;font:600 15px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#fff;background:rgba(0,0,0,.35);padding:10px 12px;
+  box-shadow:inset 0 0 0 2px rgba(255,60,172,.25);overflow-wrap:anywhere;-webkit-user-select:all;user-select:all;}
+.contact-addr code.lit{box-shadow:inset 0 0 0 2px var(--gold),0 0 18px rgba(255,214,10,.45);background:rgba(255,214,10,.12);outline:0;transition:box-shadow .2s,background .2s;}
+.contact-addr code:focus{outline:0;}
+#contactCopy.ok{--face:#3ddc84;--hi:#a8ffd0;--lo:#22a95e;--lip:#137a40;--ol:#03170b;color:#04120a;}
+.contact-soc-h{margin-top:6px;color:var(--ink3);font:700 13px var(--f-ui);letter-spacing:.12em;text-transform:uppercase;}
+.contact-soc{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 10px;}
+.contact-soc .btn-discord{margin-top:var(--b);}
+/* the floating plane: bottom corner, over the safe area; hides (fades) while «Write to us» or the footer is on screen and under the consent bar */
+.fab-plane{position:fixed;z-index:24;inset-inline-end:max(16px,env(safe-area-inset-right,0px),env(safe-area-inset-left,0px));   /* the end corner: right, left in right-to-left */
+ bottom:calc(16px + env(safe-area-inset-bottom,0px));
+  width:56px;height:56px;display:grid;place-items:center;border-radius:50%;color:#fff;text-decoration:none;background:var(--pink);
+  box-shadow:0 0 0 3px #1f0416,inset 0 3px 0 rgba(255,255,255,.35),inset 0 -4px 0 rgba(0,0,0,.25),0 10px 26px rgba(255,60,172,.45);
+  transition:opacity .25s ease,transform .25s ease,visibility .25s;}
+[dir=rtl] .fab-plane svg,[dir=rtl] .contact-plane svg{transform:scaleX(-1);}
+@media (hover:hover){.fab-plane:hover{filter:brightness(1.1);transform:translateY(-2px);}}
+.fab-plane:focus-visible{outline:3px solid var(--gold);outline-offset:4px;}
+.fab-plane.off,html.cpc-open .fab-plane{opacity:0;visibility:hidden;transform:translateY(14px) scale(.9);pointer-events:none;}
+@media (prefers-reduced-motion:reduce){.fab-plane{transition:none;}}
+html.og .fab-plane{display:none;}   /* the link card / key art: no floating button */
 .foot-sup{display:inline-flex;align-items:center;gap:8px;color:var(--mint);text-decoration:none;font:600 15px var(--f-read);padding:8px 14px;background:rgba(61,220,132,.07);box-shadow:inset 0 0 0 2px rgba(61,220,132,.3);}
 .foot-sup .px-heart{color:var(--green);}
 @media (hover:hover){.foot-sup:hover{color:#fff;background:rgba(61,220,132,.14);}}
@@ -1511,8 +1542,8 @@ function applyLang() {
   fitTop();
 }
 // the header too narrow in a long language: the word «CUBEPIX», then the support button's word step back (the home page's fitTop)
-function fitTop() { const w = $('.top .wrap'); w.classList.remove('fit1', 'fit2');
-  for (const c of ['fit1', 'fit2']) if (w.scrollWidth > w.clientWidth + .5) w.classList.add(c); }
+function fitTop() { const w = $('.top .wrap'); w.classList.remove('fit1', 'fit2', 'fit3');
+  for (const c of ['fit1', 'fit2', 'fit3']) if (w.scrollWidth > w.clientWidth + .5) w.classList.add(c); }
 addEventListener('resize', fitTop); if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitTop);
 function setLang(id) { if (!IDS.includes(id) || id === lang) return; lang = id; store.set('cubepix-site:lang', id);
   try { const u = new URL(location.href); u.searchParams.set('lang', id); history.replaceState(null, '', u); } catch (e) {}
