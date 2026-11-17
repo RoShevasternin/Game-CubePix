@@ -1011,7 +1011,7 @@ dialog.label::backdrop{background:rgba(3,3,10,.86);}
 #contact{scroll-margin-top:76px;}
 .contact{--fr:var(--pink);width:min(960px,calc(100% - 6px));margin:3px auto 9px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:32px 20px 30px;}
 @media (min-width:880px){.contact{padding:52px 48px 46px;}}
-.contact-plane{color:var(--pink);filter:drop-shadow(0 0 14px rgba(255,60,172,.55));}
+.contact-plane{display:grid;place-items:center;width:76px;height:76px;border-radius:50%;background:var(--pink);box-shadow:0 0 0 3px #1f0416,inset 0 3px 0 rgba(255,255,255,.35),inset 0 -4px 0 rgba(0,0,0,.25),0 10px 26px rgba(255,60,172,.45);}   /* the same plane as the floating button: one sign for «write to us» */
 .contact .eyebrow.contact-eb{margin:2px 0 0;color:var(--pink);}
 .contact-h{max-width:760px;text-wrap:balance;outline:0;}
 .contact-p{max-width:560px;color:var(--ink2);font:500 17px/1.6 var(--f-read);text-wrap:pretty;}
@@ -1030,7 +1030,7 @@ dialog.label::backdrop{background:rgba(3,3,10,.86);}
   width:56px;height:56px;display:grid;place-items:center;border-radius:50%;color:#fff;text-decoration:none;background:var(--pink);
   box-shadow:0 0 0 3px #1f0416,inset 0 3px 0 rgba(255,255,255,.35),inset 0 -4px 0 rgba(0,0,0,.25),0 10px 26px rgba(255,60,172,.45);
   transition:opacity .25s ease,transform .25s ease,visibility .25s;}
-[dir=rtl] .fab-plane svg,[dir=rtl] .contact-plane svg{transform:scaleX(-1);}
+[dir=rtl] .fab-plane svg,[dir=rtl] .contact-plane svg{transform:scaleX(-1);}   /* the plane flies toward the reading direction */
 @media (hover:hover){.fab-plane:hover{filter:brightness(1.1);transform:translateY(-2px);}}
 .fab-plane:focus-visible{outline:3px solid var(--gold);outline-offset:4px;}
 .fab-plane.off,html.cpc-open .fab-plane{opacity:0;visibility:hidden;transform:translateY(14px) scale(.9);pointer-events:none;}

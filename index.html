@@ -1017,7 +1017,7 @@ dialog.label::backdrop{background:rgba(3,3,10,.86);}
 #contact{scroll-margin-top:76px;}
 .contact{--fr:var(--pink);width:min(960px,calc(100% - 6px));margin:3px auto 9px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:32px 20px 30px;}
 @media (min-width:880px){.contact{padding:52px 48px 46px;}}
-.contact-plane{color:var(--pink);filter:drop-shadow(0 0 14px rgba(255,60,172,.55));}
+.contact-plane{display:grid;place-items:center;width:76px;height:76px;border-radius:50%;background:var(--pink);box-shadow:0 0 0 3px #1f0416,inset 0 3px 0 rgba(255,255,255,.35),inset 0 -4px 0 rgba(0,0,0,.25),0 10px 26px rgba(255,60,172,.45);}   /* the same plane as the floating button: one sign for «write to us» */
 .contact .eyebrow.contact-eb{margin:2px 0 0;color:var(--pink);}
 .contact-h{max-width:760px;text-wrap:balance;outline:0;}
 .contact-p{max-width:560px;color:var(--ink2);font:500 17px/1.6 var(--f-read);text-wrap:pretty;}
@@ -1036,7 +1036,7 @@ dialog.label::backdrop{background:rgba(3,3,10,.86);}
   width:56px;height:56px;display:grid;place-items:center;border-radius:50%;color:#fff;text-decoration:none;background:var(--pink);
   box-shadow:0 0 0 3px #1f0416,inset 0 3px 0 rgba(255,255,255,.35),inset 0 -4px 0 rgba(0,0,0,.25),0 10px 26px rgba(255,60,172,.45);
   transition:opacity .25s ease,transform .25s ease,visibility .25s;}
-[dir=rtl] .fab-plane svg,[dir=rtl] .contact-plane svg{transform:scaleX(-1);}
+[dir=rtl] .fab-plane svg,[dir=rtl] .contact-plane svg{transform:scaleX(-1);}   /* the plane flies toward the reading direction */
 @media (hover:hover){.fab-plane:hover{filter:brightness(1.1);transform:translateY(-2px);}}
 .fab-plane:focus-visible{outline:3px solid var(--gold);outline-offset:4px;}
 .fab-plane.off,html.cpc-open .fab-plane{opacity:0;visibility:hidden;transform:translateY(14px) scale(.9);pointer-events:none;}
@@ -1567,7 +1567,7 @@ html.og .tagline{font-size:22px;}
   <section id="contact" aria-labelledby="contactT">
     <div class="wrap">
       <div class="contact panel rv">
-        <span class="contact-plane" aria-hidden="true"><svg class="px-plane" viewBox="0 0 12 11" width="48" height="44" aria-hidden="true" shape-rendering="crispEdges" fill="currentColor"><path d="M11 0h1v1h-1zM9 1h2v1H9zM7 2h3v1H7zM5 3h4v1H5zM3 4h5v1H3zM0 5h7v1H0zM3 6h3v1H3zM5 6h2v1H5zM5 7h2v1H5zM6 8h1v2H6zM7 6h1v1H7zM8 4h1v2H8zM9 3h1v1H9zM10 1h1v2h-1z"/></svg></span>
+        <span class="contact-plane" aria-hidden="true"><svg class="plane-ico" viewBox="0 0 24 24" width="48" height="48" aria-hidden="true"><path fill="#ffcde8" d="M22 2.5 9.5 13.5 13 21.5z"/><path fill="#fff" d="M22 2.5 2 10.5l7.5 3z"/><path fill="#b0126e" d="M9.5 13.5v6l2.7-2.9z"/></svg></span>
         <p class="eyebrow contact-eb" data-t="contact.eyebrow">Contact</p>
         <h2 class="h2 contact-h" id="contactT" tabindex="-1" data-t="contact.title">Write to us</h2>
         <p class="contact-p" data-t="contact.text">A question about the game, an idea for a new floor or a bug you found? Write to us: we read every message.</p>
@@ -1587,7 +1587,7 @@ html.og .tagline{font-size:22px;}
 </main>
 
 <!-- the paper plane: always at hand, bottom corner (the start corner in right-to-left); a tap — to «Write to us» -->
-<a class="fab-plane off" id="fabPlane" href="#contact" data-ct="plane" aria-label="Write to us" data-ta="aria-label:contact.fab"><svg class="px-plane" viewBox="0 0 12 11" width="26" height="24" aria-hidden="true" shape-rendering="crispEdges" fill="currentColor"><path d="M11 0h1v1h-1zM9 1h2v1H9zM7 2h3v1H7zM5 3h4v1H5zM3 4h5v1H3zM0 5h7v1H0zM3 6h3v1H3zM5 6h2v1H5zM5 7h2v1H5zM6 8h1v2H6zM7 6h1v1H7zM8 4h1v2H8zM9 3h1v1H9zM10 1h1v2h-1z"/></svg></a>
+<a class="fab-plane off" id="fabPlane" href="#contact" data-ct="plane" aria-label="Write to us" data-ta="aria-label:contact.fab"><svg class="plane-ico" viewBox="0 0 24 24" width="32" height="32" aria-hidden="true"><path fill="#ffcde8" d="M22 2.5 9.5 13.5 13 21.5z"/><path fill="#fff" d="M22 2.5 2 10.5l7.5 3z"/><path fill="#b0126e" d="M9.5 13.5v6l2.7-2.9z"/></svg></a>
 
 <footer>
   <div class="wrap">
