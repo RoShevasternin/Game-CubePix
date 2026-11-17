@@ -100,7 +100,7 @@
     } catch (e) { return "none"; }
   }
   function page() { return MODE === "play" ? "play" : MODE === "privacy" ? "privacy" : MODE === "press" ? "press" : MODE === "page" ? "home" : "other"; }
-  // [17.11.2026] t — only for «support»: which button of the block, from the list SUP
+  // [17.11.2026] t — only for «support» and «contact»: which button, from the list SUP / CT
   function hit(e, before, t) {
     try {
       if (!STATS || !navigator.sendBeacon) return;
@@ -114,9 +114,15 @@
   // crypto («Copy» of the USDT address), itch, patreon (none on this site yet); any page. Never whether anyone donated
   var SUP = /^(open|jar|crypto|itch|patreon)$/;
   window.__cubepixSupportHit = function (t) { if (SUP.test(String(t))) hit("support", load(), String(t)); };
+  // [17.11.2026] «Write to us» (owner: «how many tapped the paper planes, on which site, from which countries» — the country is the server's):
+  // a tap on [data-ct] — the event contact, t from the list: plane (the floating plane), mail («E-mail us»), copy («Copy» of the address),
+  // telegram, discord; never what anyone writes
+  var CT = /^(plane|mail|copy|telegram|discord)$/;
+  window.__cubepixContactHit = function (t) { if (CT.test(String(t))) hit("contact", load(), String(t)); };
   try {
     document.addEventListener("click", function (ev) {
-      try { var a = ev.target && ev.target.closest ? ev.target.closest("[data-sup]") : null; if (a) window.__cubepixSupportHit(a.getAttribute("data-sup")); } catch (err) { /* */ }
+      try { var a = ev.target && ev.target.closest ? ev.target.closest("[data-sup]") : null; if (a) window.__cubepixSupportHit(a.getAttribute("data-sup"));
+        var k = ev.target && ev.target.closest ? ev.target.closest("[data-ct]") : null; if (k) window.__cubepixContactHit(k.getAttribute("data-ct")); } catch (err) { /* */ }
     }, true);
   } catch (e) { /* */ }
   (function () {

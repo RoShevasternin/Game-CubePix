@@ -1571,13 +1571,13 @@ html.og .tagline{font-size:22px;}
         <p class="eyebrow contact-eb" data-t="contact.eyebrow">Contact</p>
         <h2 class="h2 contact-h" id="contactT" tabindex="-1" data-t="contact.title">Write to us</h2>
         <p class="contact-p" data-t="contact.text">A question about the game, an idea for a new floor or a bug you found? Write to us: we read every message.</p>
-        <a class="btn btn-pink btn-lg" href="mailto:support@lewydo.com" id="contactMail"><svg class="px-ico" viewBox="0 0 12 9" width="18" height="14" aria-hidden="true" shape-rendering="crispEdges" fill="currentColor"><path d="M0 0h12v9H0zM1 1v1h1v1h1v1h1v1h1v1h2V5h1V4h1V3h1V2h1V1h-1v1H9v1H8v1H7v1H5V4H4V3H3V2H2V1zM1 3v5h10V3h-1v1H9v1H8v1H7v1H5V6H4V5H3V4H2V3z" fill-rule="evenodd"/></svg><span data-t="contact.mail">E-mail us</span></a>
-        <div class="contact-addr"><code id="contactAddr" dir="ltr" translate="no" tabindex="-1">support@lewydo.com</code><button class="btn btn-sm btn-line" id="contactCopy" type="button" aria-label="Copy the e-mail address" data-ta="aria-label:contact.copyLabel"><span id="contactCopyT" data-t="contact.copy">Copy</span></button></div>
+        <a class="btn btn-pink btn-lg" href="mailto:support@lewydo.com" id="contactMail" data-ct="mail"><svg class="px-ico" viewBox="0 0 12 9" width="18" height="14" aria-hidden="true" shape-rendering="crispEdges" fill="currentColor"><path d="M0 0h12v9H0zM1 1v1h1v1h1v1h1v1h1v1h2V5h1V4h1V3h1V2h1V1h-1v1H9v1H8v1H7v1H5V4H4V3H3V2H2V1zM1 3v5h10V3h-1v1H9v1H8v1H7v1H5V6H4V5H3V4H2V3z" fill-rule="evenodd"/></svg><span data-t="contact.mail">E-mail us</span></a>
+        <div class="contact-addr"><code id="contactAddr" dir="ltr" translate="no" tabindex="-1">support@lewydo.com</code><button class="btn btn-sm btn-line" id="contactCopy" type="button" data-ct="copy" aria-label="Copy the e-mail address" data-ta="aria-label:contact.copyLabel"><span id="contactCopyT" data-t="contact.copy">Copy</span></button></div>
         <span class="sr-only" id="contactSt" aria-live="polite"></span>
         <p class="contact-soc-h" data-t="contact.social">Or find us here</p>
         <div class="contact-soc">
-          <a class="btn btn-sm" href="https://t.me/vlad_libgdx" target="_blank" rel="noopener"><svg class="px-ico" viewBox="0 0 12 10" width="18" height="15" aria-hidden="true" shape-rendering="crispEdges" fill="currentColor"><path d="M10 0h2v2h-1v3h-1v3H9v1H8V8H7V7H6v1H5v1H4V6h1V5h1V4h1V3H6v1H5v1H4v1H2V5H0V4h2V3h2V2h3V1h3z"/></svg><span>Telegram</span></a>
-          <a class="btn btn-sm btn-discord" href="https://discord.gg/Krkk8bAqDF" target="_blank" rel="noopener"><span>Discord</span></a>
+          <a class="btn btn-sm" href="https://t.me/vlad_libgdx" target="_blank" rel="noopener" data-ct="telegram"><svg class="px-ico" viewBox="0 0 12 10" width="18" height="15" aria-hidden="true" shape-rendering="crispEdges" fill="currentColor"><path d="M10 0h2v2h-1v3h-1v3H9v1H8V8H7V7H6v1H5v1H4V6h1V5h1V4h1V3H6v1H5v1H4v1H2V5H0V4h2V3h2V2h3V1h3z"/></svg><span>Telegram</span></a>
+          <a class="btn btn-sm btn-discord" href="https://discord.gg/Krkk8bAqDF" target="_blank" rel="noopener" data-ct="discord"><span>Discord</span></a>
           <a class="btn btn-sm" href="https://x.com/lewydo_game" target="_blank" rel="noopener"><svg class="px-ico" viewBox="0 0 10 10" width="15" height="15" aria-hidden="true" shape-rendering="crispEdges" fill="currentColor"><path d="M0 0h3v1h1v1h1v1h1V2h1V1h1V0h2v1H9v1H8v1H7v1H6v1h1v1h1v1h1v1h1v1H7V9H6V8H5V7H4v1H3v1H2v1H0V9h1V8h1V7h1V6h1V5H3V4H2V3H1V2H0z"/></svg><span>X</span></a>
           <a class="btn btn-sm" href="https://www.tiktok.com/@lewydo_game" target="_blank" rel="noopener"><svg class="px-ico" viewBox="0 0 10 11" width="15" height="17" aria-hidden="true" shape-rendering="crispEdges" fill="currentColor"><path d="M5 0h2v1h1v1h2v2H8V3H7v5H6v2H5v1H2v-1H1V9H0V6h1V5h1V4h2v2H3v1H2v2h1v1h2V9h1V0z"/></svg><span>TikTok</span></a>
         </div>
@@ -1587,7 +1587,7 @@ html.og .tagline{font-size:22px;}
 </main>
 
 <!-- the paper plane: always at hand, bottom corner (the start corner in right-to-left); a tap — to «Write to us» -->
-<a class="fab-plane off" id="fabPlane" href="#contact" aria-label="Write to us" data-ta="aria-label:contact.fab"><svg class="px-plane" viewBox="0 0 12 11" width="26" height="24" aria-hidden="true" shape-rendering="crispEdges" fill="currentColor"><path d="M11 0h1v1h-1zM9 1h2v1H9zM7 2h3v1H7zM5 3h4v1H5zM3 4h5v1H3zM0 5h7v1H0zM3 6h3v1H3zM5 6h2v1H5zM5 7h2v1H5zM6 8h1v2H6zM7 6h1v1H7zM8 4h1v2H8zM9 3h1v1H9zM10 1h1v2h-1z"/></svg></a>
+<a class="fab-plane off" id="fabPlane" href="#contact" data-ct="plane" aria-label="Write to us" data-ta="aria-label:contact.fab"><svg class="px-plane" viewBox="0 0 12 11" width="26" height="24" aria-hidden="true" shape-rendering="crispEdges" fill="currentColor"><path d="M11 0h1v1h-1zM9 1h2v1H9zM7 2h3v1H7zM5 3h4v1H5zM3 4h5v1H3zM0 5h7v1H0zM3 6h3v1H3zM5 6h2v1H5zM5 7h2v1H5zM6 8h1v2H6zM7 6h1v1H7zM8 4h1v2H8zM9 3h1v1H9zM10 1h1v2h-1z"/></svg></a>
 
 <footer>
   <div class="wrap">
