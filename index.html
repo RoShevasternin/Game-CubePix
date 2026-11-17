@@ -1256,7 +1256,7 @@ html.og .tagline{font-size:22px;}
       </div>
     </div>
     <!-- «Support the developer» (studio rule docs/process/donations.md, owner 16.11.2026): visible on every screen, leads to #support -->
-    <a class="btn btn-sm top-sup" href="#support"><svg class="px-heart" viewBox="0 0 7 6" width="14" height="12" aria-hidden="true" shape-rendering="crispEdges" fill="currentColor"><path d="M1 0h2v1H1zM4 0h2v1H4zM0 1h7v2H0zM1 3h5v1H1zM2 4h3v1H2zM3 5h1v1H3z"/></svg><span data-t="nav.support">Support</span></a>
+    <a class="btn btn-sm top-sup" href="#support" data-sup="open"><svg class="px-heart" viewBox="0 0 7 6" width="14" height="12" aria-hidden="true" shape-rendering="crispEdges" fill="currentColor"><path d="M1 0h2v1H1zM4 0h2v1H4zM0 1h7v2H0zM1 3h5v1H1zM2 4h3v1H2zM3 5h1v1H3z"/></svg><span data-t="nav.support">Support</span></a>
     <a class="btn btn-pink btn-sm top-play" href="play/" aria-label="Play in the browser" data-ta="aria-label:cta.play"><svg class="px" width="14" height="14" viewBox="0 0 24 24" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><path fill="currentColor" d="M7 3h2v1h-2zM7 4h2v1h-2zM7 5h4v1h-4zM7 6h4v1h-4zM7 7h6v1h-6zM7 8h6v1h-6zM7 9h8v1h-8zM7 10h8v1h-8zM7 11h10v1h-10zM7 12h10v1h-10zM7 13h8v1h-8zM7 14h8v1h-8zM7 15h6v1h-6zM7 16h6v1h-6zM7 17h4v1h-4zM7 18h4v1h-4zM7 19h2v1h-2zM7 20h2v1h-2z"/></svg><span data-t="cta.playShort">Play</span></a>
     <div class="langsel">
       <button class="btn btn-sm lang-btn" id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="langList" aria-label="LANGUAGE" data-ta="aria-label:g:lang.title"><span class="flag" id="langFlag"></span><span id="langCode">EN</span></button>
@@ -1499,7 +1499,7 @@ html.og .tagline{font-size:22px;}
         <p class="eyebrow sup-eb" data-t="sup.eyebrow">Support the developer</p>
         <h2 class="h2 sup-h" data-t="sup.title">Help the next level come sooner</h2>
         <p class="sup-p" data-t="sup.text">Lewydo is a two-person indie studio from Ukraine. Every track and every level in Orbit Dash and CubePix is made by hand. Your support buys time for new levels, new music and updates.</p>
-        <a class="btn btn-green btn-lg sup-btn" href="https://send.monobank.ua/jar/73KdUqjNhC" target="_blank" rel="noopener" id="donate"><svg class="px-heart" viewBox="0 0 7 6" width="21" height="18" aria-hidden="true" shape-rendering="crispEdges" fill="currentColor"><path d="M1 0h2v1H1zM4 0h2v1H4zM0 1h7v2H0zM1 3h5v1H1zM2 4h3v1H2zM3 5h1v1H3z"/></svg><span data-t="sup.btn">Donate once</span></a>
+        <a class="btn btn-green btn-lg sup-btn" href="https://send.monobank.ua/jar/73KdUqjNhC" target="_blank" rel="noopener" id="donate" data-sup="jar"><svg class="px-heart" viewBox="0 0 7 6" width="21" height="18" aria-hidden="true" shape-rendering="crispEdges" fill="currentColor"><path d="M1 0h2v1H1zM4 0h2v1H4zM0 1h7v2H0zM1 3h5v1H1zM2 4h3v1H2zM3 5h1v1H3z"/></svg><span data-t="sup.btn">Donate once</span></a>
         <p class="sup-note" data-t="sup.note">Any card, any country · secure page by monobank</p>
         <!-- crypto (studio standard, owner 16.11.2026): secondary to monobank — USDT on TRON (TRC-20), the address to copy and the wallet's QR -->
         <div class="sup-crypto">
@@ -1508,7 +1508,7 @@ html.og .tagline{font-size:22px;}
             <figure class="sup-qr"><img src="assets/brand/usdt-trc20-qr.webp" width="150" height="150" loading="lazy" decoding="async" alt="QR code for the USDT TRC-20 address" data-ta="alt:sup.crypto.qrAlt"><figcaption dir="ltr">TRON · TRC-20</figcaption></figure>
             <div class="sup-c-main">
               <span class="sup-chip" dir="ltr">USDT · TRC-20</span>
-              <div class="sup-addr"><code id="cryptoAddr" dir="ltr" translate="no">TSD5GNPX2tdAZcQYrm3yEmvQCweE6cC9jY</code><button class="btn btn-sm btn-line sup-copy" id="cryptoCopy" type="button" aria-label="Copy the USDT TRC-20 address" data-ta="aria-label:sup.crypto.copyLabel"><span id="cryptoCopyT" data-t="sup.crypto.copy">Copy</span></button></div>
+              <div class="sup-addr"><code id="cryptoAddr" dir="ltr" translate="no">TSD5GNPX2tdAZcQYrm3yEmvQCweE6cC9jY</code><button class="btn btn-sm btn-line sup-copy" id="cryptoCopy" type="button" data-sup="crypto" aria-label="Copy the USDT TRC-20 address" data-ta="aria-label:sup.crypto.copyLabel"><span id="cryptoCopyT" data-t="sup.crypto.copy">Copy</span></button></div>
               <span class="sr-only" id="cryptoSt" aria-live="polite"></span>
               <p class="sup-warn" data-t="sup.crypto.warn">Send only USDT on the TRON network (TRC-20). Other coins or networks will be lost.</p>
             </div>
@@ -1536,7 +1536,7 @@ html.og .tagline{font-size:22px;}
       <a href="https://x.com/lewydo_game" target="_blank" rel="noopener" id="footX">X</a>
       <a href="THIRD_PARTY_NOTICES.txt" data-t="g:set.credits">Credits &amp; licences</a>
     </nav>
-    <a class="foot-sup" href="#support" id="footSup"><span data-t="foot.support">Support Lewydo</span><svg class="px-heart" viewBox="0 0 7 6" width="14" height="12" aria-hidden="true" shape-rendering="crispEdges" fill="currentColor"><path d="M1 0h2v1H1zM4 0h2v1H4zM0 1h7v2H0zM1 3h5v1H1zM2 4h3v1H2zM3 5h1v1H3z"/></svg></a>
+    <a class="foot-sup" href="#support" id="footSup" data-sup="open"><span data-t="foot.support">Support Lewydo</span><svg class="px-heart" viewBox="0 0 7 6" width="14" height="12" aria-hidden="true" shape-rendering="crispEdges" fill="currentColor"><path d="M1 0h2v1H1zM4 0h2v1H4zM0 1h7v2H0zM1 3h5v1H1zM2 4h3v1H2zM3 5h1v1H3z"/></svg></a>
     <small data-t="foot.pd">The original paintings behind the game’s pictures are in the public domain.</small>
     <small>© 2026 Lewydo™. <span data-t="foot.rights">All rights reserved.</span></small>
   </div>

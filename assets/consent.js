@@ -100,12 +100,25 @@
     } catch (e) { return "none"; }
   }
   function page() { return MODE === "play" ? "play" : MODE === "privacy" ? "privacy" : MODE === "press" ? "press" : MODE === "page" ? "home" : "other"; }
-  function hit(e, before) {
+  // [17.11.2026] t — only for «support»: which button of the block, from the list SUP
+  function hit(e, before, t) {
     try {
       if (!STATS || !navigator.sendBeacon) return;
-      navigator.sendBeacon(STATS, JSON.stringify({ s: "cp", p: page(), e: e, c: before === "granted" || before === "denied" ? before : "none", src: source() }));
+      var o = { s: "cp", p: page(), e: e, c: before === "granted" || before === "denied" ? before : "none", src: source() };
+      if (t) o.t = t;
+      navigator.sendBeacon(STATS, JSON.stringify(o));
     } catch (err) { /* the counter never matters more than the page */ }
   }
+  // [17.11.2026] the «Support» block (owner: «how many users tapped Support on our sites», the morning report, as the Orbit Dash site): a tap on
+  // [data-sup] — the event support, t from the list: open (the «♥ Support» button of the header / footer → #support), jar (the monobank jar),
+  // crypto («Copy» of the USDT address), itch, patreon (none on this site yet); any page. Never whether anyone donated
+  var SUP = /^(open|jar|crypto|itch|patreon)$/;
+  window.__cubepixSupportHit = function (t) { if (SUP.test(String(t))) hit("support", load(), String(t)); };
+  try {
+    document.addEventListener("click", function (ev) {
+      try { var a = ev.target && ev.target.closest ? ev.target.closest("[data-sup]") : null; if (a) window.__cubepixSupportHit(a.getAttribute("data-sup")); } catch (err) { /* */ }
+    }, true);
+  } catch (e) { /* */ }
   (function () {
     var sentView = false;
     function view() { if (!sentView) { sentView = true; hit("view", load()); } }
