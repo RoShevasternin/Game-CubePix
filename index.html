@@ -1032,15 +1032,22 @@ dialog.label::backdrop{background:rgba(3,3,10,.86);}
 .contact-soc .btn-discord{margin-top:var(--b);}
 /* the floating plane: bottom corner, over the safe area; hides (fades) while «Write to us» or the footer is on screen and under the consent bar */
 .fab-plane{position:fixed;z-index:24;inset-inline-end:max(16px,env(safe-area-inset-right,0px),env(safe-area-inset-left,0px));   /* the end corner: right, left in right-to-left */
- bottom:calc(16px + env(safe-area-inset-bottom,0px));
-  width:56px;height:56px;display:grid;place-items:center;border-radius:50%;color:#fff;text-decoration:none;background:var(--pink);
-  box-shadow:0 0 0 3px #1f0416,inset 0 3px 0 rgba(255,255,255,.35),inset 0 -4px 0 rgba(0,0,0,.25),0 10px 26px rgba(255,60,172,.45);
-  transition:opacity .25s ease,transform .25s ease,visibility .25s;}
-[dir=rtl] .fab-plane svg,[dir=rtl] .contact-plane svg{transform:scaleX(-1);}   /* the plane flies toward the reading direction */
+  bottom:calc(16px + env(safe-area-inset-bottom,0px));max-width:calc(100vw - 32px);height:50px;display:flex;align-items:center;gap:10px;padding:6px 18px 6px 6px;
+  border-radius:999px;color:#fff;text-decoration:none;background:rgba(20,17,57,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  box-shadow:0 0 0 2px var(--pink),0 0 0 4px #1f0416,0 10px 26px rgba(255,60,172,.40);
+  transition:opacity .25s ease,transform .25s ease,visibility .25s,padding .25s ease;}
+[dir=rtl] .fab-plane{padding:6px 6px 6px 18px;}
+.fp-ico{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--pink);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -3px 0 rgba(0,0,0,.22);}
+.fp-ico svg{width:19px;height:19px;transform:translate(-1px,1px);}   /* the optical centre of the plane */
+[dir=rtl] .fp-ico svg,[dir=rtl] .contact-plane svg{transform:translate(1px,1px) scaleX(-1);}   /* it flies toward the reading direction */
+.fp-t{min-width:0;overflow:hidden;white-space:nowrap;font:700 14px var(--f-ui);letter-spacing:.06em;text-transform:uppercase;max-width:22em;transition:max-width .25s ease,opacity .2s ease;}
+.fab-plane.mini,.fab-plane.near{padding:6px;}   /* while the page scrolls, or over a button of the page — just the circle; it stops (≈ 0.9 s) — the words come back */
+.fab-plane.mini .fp-t,.fab-plane.near .fp-t{max-width:0;opacity:0;}
 @media (hover:hover){.fab-plane:hover{filter:brightness(1.1);transform:translateY(-2px);}}
 .fab-plane:focus-visible{outline:3px solid var(--gold);outline-offset:4px;}
-.fab-plane.off,html.cpc-open .fab-plane{opacity:0;visibility:hidden;transform:translateY(14px) scale(.9);pointer-events:none;}
-@media (prefers-reduced-motion:reduce){.fab-plane{transition:none;}}
+.fab-plane.off,.fab-plane.hid,html.cpc-open .fab-plane{opacity:0;visibility:hidden;transform:translateY(14px) scale(.9);pointer-events:none;}
+@media (prefers-reduced-motion:reduce){.fab-plane,.fp-t{transition:none;}}
 html.og .fab-plane{display:none;}   /* the link card / key art: no floating button */
 .foot-sup{display:inline-flex;align-items:center;gap:8px;color:var(--mint);text-decoration:none;font:600 15px var(--f-read);padding:8px 14px;background:rgba(61,220,132,.07);box-shadow:inset 0 0 0 2px rgba(61,220,132,.3);}
 .foot-sup .px-heart{color:var(--green);}
@@ -1567,7 +1574,7 @@ html.og .tagline{font-size:22px;}
   <section id="contact" aria-labelledby="contactT">
     <div class="wrap">
       <div class="contact panel rv">
-        <span class="contact-plane" aria-hidden="true"><svg class="plane-ico" viewBox="0 0 24 24" width="48" height="48" aria-hidden="true"><g transform="translate(12 12) scale(1.3) translate(-12 -12)"><path d="M18.6 6.2 10 13l.9 4.8 2.3-2.6 3.6 2.6z" fill="#ffd6ec" stroke="#ffd6ec" stroke-width="1.1" stroke-linejoin="round"/><path d="M18.6 6.2 5.4 11.3l4.6 1.7z" fill="#fff" stroke="#fff" stroke-width="1.1" stroke-linejoin="round"/></g></svg></span>
+        <span class="contact-plane" aria-hidden="true"><svg class="plane-ico" viewBox="0 0 16 16" width="34" height="34" aria-hidden="true"><path fill="#fff" d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471z"/></svg></span>
         <p class="eyebrow contact-eb" data-t="contact.eyebrow">Contact</p>
         <h2 class="h2 contact-h" id="contactT" tabindex="-1" data-t="contact.title">Write to us</h2>
         <p class="contact-p" data-t="contact.text">A question about the game, an idea for a new floor or a bug you found? Write to us: we read every message.</p>
@@ -1587,7 +1594,8 @@ html.og .tagline{font-size:22px;}
 </main>
 
 <!-- the paper plane: always at hand, bottom corner (the start corner in right-to-left); a tap — to «Write to us» -->
-<a class="fab-plane off" id="fabPlane" href="#contact" data-ct="plane" aria-label="Write to us" data-ta="aria-label:contact.fab"><svg class="plane-ico" viewBox="0 0 24 24" width="40" height="40" aria-hidden="true"><g transform="translate(12 12) scale(1.3) translate(-12 -12)"><path d="M18.6 6.2 10 13l.9 4.8 2.3-2.6 3.6 2.6z" fill="#ffd6ec" stroke="#ffd6ec" stroke-width="1.1" stroke-linejoin="round"/><path d="M18.6 6.2 5.4 11.3l4.6 1.7z" fill="#fff" stroke="#fff" stroke-width="1.1" stroke-linejoin="round"/></g></svg></a>
+<!-- the plane: Bootstrap Icons «send-fill» (MIT, © The Bootstrap Authors) — the studio's one sign for «write to us» on every site -->
+<a class="fab-plane off" id="fabPlane" href="#contact" data-ct="plane" aria-label="Write to us" data-ta="aria-label:contact.fab"><span class="fp-ico"><svg class="plane-ico" viewBox="0 0 16 16" width="19" height="19" aria-hidden="true"><path fill="#fff" d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471z"/></svg></span><span class="fp-t" data-t="contact.fab">Write to us</span></a>
 
 <footer>
   <div class="wrap">
@@ -1796,7 +1804,23 @@ function fitLines() { fitTop(); $$('[data-fit]').forEach((el) => { el.style.font
   $('#contactMail').addEventListener('click', () => { copy(); c.classList.remove('lit'); void c.offsetWidth; c.classList.add('lit');
     c.focus({ preventScroll: true }); setTimeout(() => c.classList.remove('lit'), 2200); });
   const fab = $('#fabPlane'), sec = $('#contact'), vis = new Set();
-  const set = () => fab.classList.toggle('off', vis.size > 0);
+  // over a button or a link of the page (the studio's rule, 17.11.2026): the pill folds to its circle; if even the circle would cover one — it hides.
+  // Measured where the pill WILL be (its end corner), never mid-transition. A function declaration: set() may call it before this line runs
+  function near() { fab.classList.remove('near', 'hid'); if (fab.classList.contains('off')) return;
+    // the pill's final size from its words (6 + 38 + 10 + words + 18), anchored at its end corner — not the box mid-animation
+    const b = fab.getBoundingClientRect(), rtl = document.documentElement.dir === 'rtl', full = Math.min(innerWidth - 32, 72 + fab.querySelector('.fp-t').scrollWidth);
+    const f = { left: rtl ? b.left : b.right - full, right: rtl ? b.left + full : b.right, top: b.top, bottom: b.bottom };
+    const circle = { left: rtl ? b.left : b.right - 50, right: rtl ? b.left + 50 : b.right, top: b.top, bottom: b.bottom };
+    const over = (r) => [...document.querySelectorAll('a[href],button,input,select,textarea,[role=button],.btn')].some((e) => {
+      if (e === fab || fab.contains(e)) return false; const q = e.getBoundingClientRect();
+      if (!q.width || !q.height || q.bottom < 0 || q.top > innerHeight) return false; const cs = getComputedStyle(e);
+      if (cs.visibility === 'hidden' || cs.display === 'none' || +cs.opacity === 0 || e.closest('[hidden]')) return false;
+      return q.left < r.right && r.left < q.right && q.top < r.bottom && r.top < q.bottom; });
+    if (over(f)) { fab.classList.add('near'); if (over(circle)) fab.classList.add('hid'); } }
+  const set = () => { fab.classList.toggle('off', vis.size > 0); near(); };
+  let rest = 0; addEventListener('scroll', () => { fab.classList.add('mini'); clearTimeout(rest); rest = setTimeout(() => { fab.classList.remove('mini'); near(); setTimeout(near, 700); }, 900); }, { passive: true });   // again once the page's own reveals settle
+  addEventListener('resize', near); setTimeout(near, 400);
+  setInterval(() => { if (!fab.classList.contains('mini') && !document.hidden) near(); }, 1500);   // the page moves by itself too (reveals, Pix, carousels)
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((es) => { es.forEach((e) => (e.isIntersecting ? vis.add(e.target) : vis.delete(e.target))); set(); }, { threshold: 0.05 });
     io.observe(sec); io.observe($('footer'));
