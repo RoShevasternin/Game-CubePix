@@ -11,6 +11,7 @@
      id     — measurementId вебпотоку (G-…; site/site.json → ga4)
      mode   — "page" (сторінка сайту: page_view + store_click), "play" (/play/: ще події гри через window.__cubepixTrack),
               "privacy" (політика: лише показати й змінити вибір — gtag там не вантажиться ніколи)
+              "press" (/press/, сторінка для преси, 17.11.2026: як "page", лічильник рахує її як p: "press")
      S, rtl — лише /play/: тексти банера всіма мовами й мови справа наліво; мову бере з <html lang>, який ставить гра
               (сторінка сайту перекладає банер своїм скриптом — data-t)
 
@@ -98,7 +99,7 @@
       return inApp();
     } catch (e) { return "none"; }
   }
-  function page() { return MODE === "play" ? "play" : MODE === "privacy" ? "privacy" : MODE === "page" ? "home" : "other"; }
+  function page() { return MODE === "play" ? "play" : MODE === "privacy" ? "privacy" : MODE === "press" ? "press" : MODE === "page" ? "home" : "other"; }
   function hit(e, before) {
     try {
       if (!STATS || !navigator.sendBeacon) return;
