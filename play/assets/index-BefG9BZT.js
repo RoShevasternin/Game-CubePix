@@ -1607,6 +1607,12 @@ koo`,"film.watch":"ILAALI","film.sound":"Sagalee banii ilaali","film.c1":"Muuziy
   .set-restore.rs-busy{cursor:progress;}
   .set-restore.rs-done .rs-line{color:#7dffcf;} .set-restore.rs-error .rs-line{color:#ff8fa3;}
   .set-rec .set-val{max-width:none;}
+  /* the language row on a narrow screen (owner 19.11.2026: an old Galaxy Fold, 280 px — the flag ran over «Language»): the label never goes
+     under the flag (it gives way with «…» as a last resort), and up to 300 px the language's name steps aside — the flag says which one it is */
+  .set-lang .set-l{flex-shrink:0;max-width:72%;}
+  .set-lang .set-l .read{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  @media (max-width:340px){ .set-lang .set-r{gap:5px;} }
+  @media (max-width:300px){ .set-lang .set-val{display:none;} }
   .set-lw{display:flex;pointer-events:none;} .set-lw .lw-name{display:none;}                  /* the Lewydo heart alone, at its signature size */
   .set-share{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:48px;margin-top:10px;padding:12px 10px;font-size:16px;}
   .btn-secondary.pic-share{position:absolute;bottom:calc(-1*var(--ph));inset-inline-end:calc(-1*var(--pe));width:40px;height:40px;min-width:0;min-height:40px;padding:0;margin:0;z-index:5;display:flex;align-items:center;justify-content:center;}
