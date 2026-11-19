@@ -7,10 +7,22 @@
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#07061a" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="CubePix" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>CubePix — play in the browser</title>
     <meta name="description" content="CubePix, the cube museum: reveal pixel art layer by layer. The whole museum, free in your browser." />
     <style>html,body{margin:0;background:#07061a;-webkit-tap-highlight-color:transparent;}</style>
-    <script type="module" crossorigin src="./assets/index-BWaC9ciJ.js"></script>
+    <script>/* the web game: install (owner 19.11.2026, as Orbit Dash v162; WEB APP in src/CubePix.jsx). Chrome / Edge give beforeinstallprompt early,
+       before the game: kept for our INSTALL (preventDefault — no browser mini-bar: the game never asks by itself); appinstalled — installed (our
+       button or the browser's own). cp-app — the game opened installed (home screen, Dock): once, at the start */
+    (function(){try{var I=window.__cubepixInstall={bip:null,installed:false},f=function(){try{dispatchEvent(new Event("cubepix-install"))}catch(x){}};
+    addEventListener("beforeinstallprompt",function(e){e.preventDefault();I.bip=e;f()});addEventListener("appinstalled",function(){I.bip=null;I.installed=true;f()});
+    var m=function(q){return matchMedia(q).matches},u=navigator.userAgent,ph=/iPhone|iPad|iPod|Android/.test(u)||(/Macintosh/.test(u)&&navigator.maxTouchPoints>1);
+    if(m("(display-mode: standalone)")||(ph&&m("(display-mode: fullscreen)"))||navigator.standalone)document.documentElement.classList.add("cp-app")}catch(e){}})();</script>
+    <script type="module" crossorigin src="./assets/index-C4EJhn17.js"></script>
   </head>
   <body>
     <div id="root"></div>
