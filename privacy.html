@@ -72,7 +72,7 @@ footer{margin-top:44px;color:#9d98dc;font-size:14px;}
 <div class="wrap">
   <a class="back" href="./"><span>←</span><span><span class="c">CUBE</span>PIX</span></a>
   <h1>Privacy Policy</h1>
-  <p class="meta">CubePix — the game for Android, iPhone and iPad, the web game and this website · effective 2026-11-12</p>
+  <p class="meta">CubePix — the game for Android, iPhone and iPad, the web game and this website · effective 2026-11-22</p>
 
   <div class="box">
     <b>The short version</b>
@@ -111,11 +111,13 @@ footer{margin-top:44px;color:#9d98dc;font-size:14px;}
 
   <h3>Ads and your choices</h3>
   <ul>
-    <li>In the EEA, the UK and Switzerland, a consent form from Google’s User Messaging Platform appears before ads are personalised. You can change your choice at any time in the App’s settings.</li>
-    <li>On iPhone and iPad, Apple’s App Tracking Transparency prompt asks whether CubePix may use your advertising identifier (IDFA). If you choose “Ask App Not to Track”, ads are still shown, but the IDFA is not used. You can change this at any time in Settings → Privacy &amp; Security → Tracking.</li>
+    <li>In the EEA, the UK and Switzerland, a consent form from Google’s User Messaging Platform appears before ads are personalised. It is not shown at the very first launch: it appears once you have finished your first picture, or earlier if you choose to watch a video for a reward, and then only once. A short card from us explains it first; the choice itself is made in Google’s form, where agreeing and not agreeing are equally easy. Until you answer, no ads are requested in these countries. You can change your choice at any time in the App’s settings.</li>
+    <li>On iPhone and iPad, Apple’s App Tracking Transparency prompt asks whether CubePix may use your advertising identifier (IDFA). It appears at the same moment as the consent form above (after your first finished picture, or when you first choose a reward video), not at launch; until you answer, ads may be shown, but never with the IDFA. If you choose “Ask App Not to Track”, ads are still shown, but the IDFA is not used. You can change this at any time in Settings → Privacy &amp; Security → Tracking.</li>
+    <li>Nothing in the game depends on your answer: agreeing or not agreeing gives or takes away no coins, keys, pictures or features.</li>
     <li>TikTok ad measurement follows the same choices: in the EEA, the UK and Switzerland only with your consent in Google’s form; in US states with privacy laws you can opt out in the App’s privacy settings; on iPhone and iPad it stays off unless you allow tracking in Apple’s prompt. Turning it off does not change the game.</li>
     <li>You can reset or delete your advertising ID, or opt out of ad personalisation, in your Android settings (Settings → Google → Ads, or Settings → Privacy → Ads, depending on your device).</li>
     <li>Rewarded videos are always optional: nothing in the game requires watching one.</li>
+    <li id="consent-counter"><b>Anonymous consent counter.</b> To know how many players agree or not — Google Analytics cannot count the players who decline — the App sends one small anonymous message to our own counter at <code>stats.lewydo.com</code> (Cloudflare Workers, the same counter as described for the website below) each time the consent form or Apple’s prompt is shown and answered. It contains only: the game (CubePix), the platform (Android or iPhone/iPad), which question it was (Google’s consent form or Apple’s tracking prompt), the step (shown, or your answer: agreed, declined, chose options, allowed, asked not to track), the resulting kind of ads (personalised, non-personalised, limited), the moment it was asked (after the first picture, at a reward video, or at launch) and whether the GDPR applies to you (yes, no or unknown); Cloudflare adds the two-letter country code it derives from your connection. It contains no advertising ID or any other identifier, no IP address (Cloudflare sees it to deliver the message, as any server does; the counter does not store it), no user agent and no cookies, so it cannot be linked to you. We read it only as totals. The legal basis is our legitimate interest in measuring, in aggregate, whether asking at a later moment is fair and works (GDPR Art. 6(1)(f)).</li>
     <li>If you buy “No ads”, banners and full-screen ads between levels and at launch stop.</li>
   </ul>
 
@@ -157,7 +159,7 @@ footer{margin-top:44px;color:#9d98dc;font-size:14px;}
   <ul>
     <li>Data on your device stays until you delete the App, clear its data, or clear this site’s data in your browser.</li>
     <li>Analytics and crash data are kept for a limited time (at most 14 months) and then deleted or anonymised.</li>
-    <li>The anonymous rows of our visit counter are deleted by Cloudflare after about 3 months.</li>
+    <li>The anonymous rows of our visit counter and of the App’s consent counter are deleted by Cloudflare after about 3 months.</li>
     <li>Data held by Google services is kept under Google’s retention policies and your Google account settings.</li>
   </ul>
 
@@ -173,10 +175,13 @@ footer{margin-top:44px;color:#9d98dc;font-size:14px;}
   </ul>
 
   <h2>International transfers and security</h2>
-  <p>Google, and Cloudflare for our visit counter, may process data outside your country, including in the United States. For transfers from the EEA, the UK and Switzerland it relies on safeguards such as the European Commission’s Standard Contractual Clauses. We use reputable providers and keep what we process to what the game needs.</p>
+  <p>Google, and Cloudflare for our anonymous counters, may process data outside your country, including in the United States. For transfers from the EEA, the UK and Switzerland it relies on safeguards such as the European Commission’s Standard Contractual Clauses. We use reputable providers and keep what we process to what the game needs.</p>
 
   <h2>Changes to this policy</h2>
   <p>If this policy changes, we will publish the new version on this page with a new effective date. For important changes, we will also tell you in the App.</p>
+  <ul>
+    <li><b>22 November 2026</b> (CubePix 3.0.0): the consent form and Apple’s tracking prompt now appear after your first finished picture, or when you first choose a reward video, instead of at the first launch; on iPhone and iPad ads may be shown before you answer Apple’s prompt, without the IDFA; added the App’s <a href="#consent-counter">anonymous consent counter</a>.</li>
+  </ul>
 
   <h2>Contact</h2>
   <p>Lewydo · <a href="mailto:support@lewydo.com">support@lewydo.com</a> · <a href="https://lewydo.com/" target="_blank" rel="noopener">https://lewydo.com/</a></p>
