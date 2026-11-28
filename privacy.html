@@ -72,7 +72,7 @@ footer{margin-top:44px;color:#9d98dc;font-size:14px;}
 <div class="wrap">
   <a class="back" href="./"><span>←</span><span><span class="c">CUBE</span>PIX</span></a>
   <h1>Privacy Policy</h1>
-  <p class="meta">CubePix — the game for Android, iPhone and iPad, the web game and this website · effective 2026-11-22</p>
+  <p class="meta">CubePix — the game for Android, iPhone and iPad, the web game and this website · effective 2026-11-28</p>
 
   <div class="box">
     <b>The short version</b>
@@ -100,6 +100,7 @@ footer{margin-top:44px;color:#9d98dc;font-size:14px;}
       <tr><td>Unity Ads (Unity Technologies), through Google AdMob mediation</td><td>Bids for the same ad spaces as Google (the banner, occasional full-screen ads and videos you choose to watch for a reward), so each ad the game shows earns a fairer price; it follows the same consent choices as AdMob</td><td>Advertising ID (Android advertising ID; on iPhone and iPad the IDFA only if you allow tracking in Apple’s prompt), IP address, device and app information, ad interactions</td></tr>
       <tr><td>Google Play Billing (Android) · Apple App Store in-app purchase (iPhone and iPad)</td><td>In-app purchases (for example “No ads” or coin packs) and restoring them</td><td>Google or Apple handles the payment. We receive a purchase confirmation (product, order number, time), never your payment details</td></tr>
       <tr><td>Google Analytics for Firebase</td><td>Helps us see how the game is played (for example which floors are opened and which pictures are finished) so we can improve it</td><td>App instance ID, app usage events, device model, OS version, approximate country from the IP address</td></tr>
+      <tr><td>Google BigQuery (Google Cloud), in our own Google Cloud project</td><td>Receives a daily copy of the App’s analytics events (the row above), so we can see per country whether the players our ads bring keep playing and whether the ads pay for themselves — <a href="#bigquery">more below</a></td><td>The same analytics events: app instance ID, app usage events, platform, app version, approximate country; ad revenue that AdMob reports for each ad shown in the App; in-app purchase amounts</td></tr>
       <tr><td>Firebase Crashlytics</td><td>Crash reports, so we can fix bugs</td><td>Crash traces, device model, OS version, app state at the time of the crash, installation ID</td></tr>
       <tr><td>Firebase Remote Config</td><td>Switches holiday exhibitions on and off by date, without an app update; on iPhone and iPad it also tells the App which version is the newest in the App Store</td><td>Firebase installation ID, app version, device language and country</td></tr>
       <tr><td>TikTok Business SDK (TikTok)</td><td>Measures which of our ads on TikTok lead to people installing and playing the game, so our ads reach people who may enjoy it. It runs only with your consent where the law requires it (in the EEA, the UK and Switzerland — your choice in Google’s consent form; in US states with privacy laws — unless you opt out in the App’s privacy settings), and on iPhone and iPad only if you allow tracking in Apple’s prompt</td><td>Advertising ID (Android advertising ID; on iPhone and iPad the IDFA, only with your permission), IP address, device and app information, a few app events (install, launch, tutorial finished, a picture finished, an achievement, coins spent, in-app purchase)</td></tr>
@@ -108,6 +109,14 @@ footer{margin-top:44px;color:#9d98dc;font-size:14px;}
     </tbody>
   </table>
   <p>Each provider handles data under its own terms: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>, <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">how Google uses information from apps that use its services</a>, <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase privacy</a>, <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a>, <a href="https://www.tiktok.com/legal/page/global/privacy-policy/en" target="_blank" rel="noopener">TikTok Privacy Policy</a>, <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy" target="_blank" rel="noopener">Unity Ads privacy policy</a>.</p>
+
+  <h3 id="bigquery">Measuring whether our ads pay off (Google BigQuery)</h3>
+  <ul>
+    <li>Firebase sends a daily copy of the App’s analytics events to Google BigQuery in our own Google Cloud project (region: United States). Only the App’s events go there — not those of the Web game or the Site. Google deletes these copies after 60 days.</li>
+    <li>From them we keep a short summary, one row per installation and day: the app instance ID (a random ID of this installation of the App — not your name, e-mail, phone number or advertising ID), the platform, the app version, the approximate country, the game’s language, where the installation came from (for example a Google Play search or one of our ad campaigns), how many sessions and pictures, play time, and the ad revenue and purchase amounts from that day. Events that arrive without an app instance ID are not counted. We keep this summary for at most 14 months.</li>
+    <li>We use it only inside our studio, and read it as totals — for example “players from France last week, what our ads there cost, and what those players brought” — to decide where our ads are worth showing. It is not used to show you ads, not sent to TikTok, Apple or any ad network, not combined with your name or contact details, and never sold or shared.</li>
+    <li>The legal basis is our legitimate interest in knowing whether our advertising works, in aggregate, so the game can stay free (GDPR Art. 6(1)(f)). You can object at any time by writing to us.</li>
+  </ul>
 
   <h3>Ads and your choices</h3>
   <ul>
@@ -160,6 +169,7 @@ footer{margin-top:44px;color:#9d98dc;font-size:14px;}
   <ul>
     <li>Data on your device stays until you delete the App, clear its data, or clear this site’s data in your browser.</li>
     <li>Analytics and crash data are kept for a limited time (at most 14 months) and then deleted or anonymised.</li>
+    <li>The daily copies of the App’s analytics events in Google BigQuery are deleted by Google after 60 days; our <a href="#bigquery">summary per installation and day</a> is kept for at most 14 months.</li>
     <li>The anonymous rows of our visit counter and of the App’s consent counter are deleted by Cloudflare after about 3 months.</li>
     <li>Data held by Google services is kept under Google’s retention policies and your Google account settings.</li>
   </ul>
@@ -181,6 +191,7 @@ footer{margin-top:44px;color:#9d98dc;font-size:14px;}
   <h2>Changes to this policy</h2>
   <p>If this policy changes, we will publish the new version on this page with a new effective date. For important changes, we will also tell you in the App.</p>
   <ul>
+    <li><b>28 November 2026</b>: the App’s analytics events are now also copied to Google BigQuery in our own Google Cloud project, to measure, per country, whether our ads pay off — <a href="#bigquery">what is kept and for how long</a>.</li>
     <li><b>22 November 2026</b> (CubePix 3.0.0): the consent form and Apple’s tracking prompt now appear after your first finished picture, or when you first choose a reward video, instead of at the first launch; on iPhone and iPad ads may be shown before you answer Apple’s prompt, without the IDFA; added the App’s <a href="#consent-counter">anonymous consent counter</a>; the Site’s update video now <a href="#youtube">plays from YouTube after you tap ▶</a>.</li>
   </ul>
 
